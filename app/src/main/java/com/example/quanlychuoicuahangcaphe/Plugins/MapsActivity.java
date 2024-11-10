@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.util.Log;
 
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String nhahangId = getIntent().getStringExtra("nhahang_id");
 
         // Khởi tạo DatabaseReference cho nhaHang
-        nhaHangRef = FirebaseDatabase.getInstance().getReference().child("nhaHang");
+        nhaHangRef = FirebaseDatabase.getInstance().getReference().child("quanCafe");
 
         // Khởi tạo Map Fragment
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -66,15 +66,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    NhaHang nhaHang = dataSnapshot.getValue(NhaHang.class);
+                    QuanCafe quanCafe = dataSnapshot.getValue(QuanCafe.class);
 
-                    if (nhaHang != null) {
-                       LatLng nhaHangLatLng = chuyenDiaChiThanhLatLng(nhaHang.diaChiNhaHang);
+                    if (quanCafe != null) {
+                       LatLng quanCafeLatLng = chuyenDiaChiThanhLatLng(quanCafe.address);
                         // Thêm đánh dấu cho địa điểm đích
-                        gMap.addMarker(new MarkerOptions().position(nhaHangLatLng).title("Nhà hàng"));
+                        gMap.addMarker(new MarkerOptions().position(quanCafeLatLng).title("Quán cà phê"));
 
                         // Di chuyển camera đến địa điểm đích
-                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nhaHangLatLng, 15));
+                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(quanCafeLatLng, 15));
                     }
                 } else {
                     Log.e("MapsActivity", "Không tìm thấy nhà hàng với ID đã cho");

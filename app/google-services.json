@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "209540003825",
-    "firebase_url": "https://quanlynhahang-ee2e7-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "quanlynhahang-ee2e7",
-    "storage_bucket": "quanlynhahang-ee2e7.appspot.com"
+    "project_number": "816912486913",
+    "firebase_url": "https://managercaf-38cef-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "managercaf-38cef",
+    "storage_bucket": "managercaf-38cef.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:209540003825:android:03200dbad60724a0caf650",
+        "mobilesdk_app_id": "1:816912486913:android:5320f14f4e49c5af03a600",
         "android_client_info": {
           "package_name": "com.example.quanlychuoicuahangcaphe"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCq2BhFQ2OPWNQbsrPPFxSqXVh_fNzSZ3g"
+          "current_key": "AIzaSyDbF5KgSbFFfhKcgIWbufyexB0yEVlWmtE"
         }
       ],
       "services": {

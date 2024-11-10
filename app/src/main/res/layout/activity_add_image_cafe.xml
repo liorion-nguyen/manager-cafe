@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddImageCafe">
+<!--<ScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
+
+
+        <ImageView
+            android:id="@+id/ivChonAnh"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img"
+            android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btnChupanh"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Chụp ảnh"
+                    android:textStyle="bold"
+                    android:textColor="#069C54"
+                    android:background="@drawable/buttonoutline"
+                    android:textSize="9pt"/>
+                <Button
+                    android:id="@+id/btnChonAnh"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Chọn ảnh"
+                    android:textStyle="bold"
+                    android:textColor="#069C54"
+                    android:background="@drawable/buttonoutline"
+                    android:textSize="9pt"/>
+            </LinearLayout>
+        <Button
+            android:id="@+id/btnThemAnh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Thêm ảnh nhà hàng"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/primarybutton"
+            android:textColor="@color/white"
+            android:textSize="9pt"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvCacAnhQuanCafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnTroLai"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Trở lại"
+            android:background="@drawable/buttonoutline"
+            android:textColor="#069C54"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textSize="9pt"/>
+    </LinearLayout>
+<!--</ScrollView>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

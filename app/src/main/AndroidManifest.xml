@@ -62,7 +62,7 @@
             android:name=".SuaMonAnActivity"
             android:exported="false" />
         <activity
-            android:name=".SuaNhaHang"
+            android:name=".UpdateCafe"
             android:exported="false" />
         <activity
             android:name=".ThemMoiMonAnActivity"
@@ -74,19 +74,14 @@
             android:name=".XemThucDonActivity"
             android:exported="false" />
         <activity
-            android:name=".XemChiTietNhaHang"
+            android:name=".DetailCafe"
             android:exported="false" />
         <activity
-            android:name=".ThemAnhNhaHang"
+            android:name=".AddImageCafe"
             android:exported="false" />
         <activity
-            android:name=".ThemMoiNhaHangActivity"
+            android:name=".AddACafeActivity"
             android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".MainActivity"
