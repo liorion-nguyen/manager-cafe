@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.quanlychuoicuahangcaphe.Adapter.monAnAdapter;
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,10 +34,10 @@ public class XemThucDonActivity extends AppCompatActivity {
     ListView lvMonAn;
     ArrayList<monAn> listMonAn;
     com.example.quanlychuoicuahangcaphe.Adapter.monAnAdapter monAnAdapter;
-    NhaHang b = new NhaHang();
+    QuanCafe b = new QuanCafe();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    DatabaseReference nhaHang = databaseReference.child("nhaHang");
+    DatabaseReference quanCafe = databaseReference.child("quanCafe");
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
     @Override
@@ -55,7 +55,7 @@ public class XemThucDonActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle data = intent.getExtras();
-        NhaHang a = (NhaHang) data.getSerializable("nhahang");
+        QuanCafe a = (QuanCafe) data.getSerializable("cafe");
         if (a.getListMonAn() != null) {
             for (monAn ma : a.getListMonAn()){
                 listMonAn.add(ma);
@@ -67,12 +67,12 @@ public class XemThucDonActivity extends AppCompatActivity {
         lvMonAn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent nhahang = new Intent(XemThucDonActivity.this, XemMonAn.class);
+                Intent quanCafe = new Intent(XemThucDonActivity.this, XemMonAn.class);
                 Bundle data = new Bundle();
-                data.putSerializable("nhahang",b);
+                data.putSerializable("cafe",b);
                 data.putSerializable("monan",b.getListMonAn().get(i));
-                nhahang.putExtras(data);
-                startActivityForResult(nhahang,104);
+                quanCafe.putExtras(data);
+                startActivityForResult(quanCafe,104);
             }
         });
 
@@ -81,7 +81,7 @@ public class XemThucDonActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = new Intent();
                 Bundle data = new Bundle();
-                data.putSerializable("nhahang",b);
+                data.putSerializable("cafe",b);
                 intent1.putExtras(data);
                 setResult(102,intent1);
                 finish();
@@ -93,7 +93,7 @@ public class XemThucDonActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent themMonAn = new Intent(XemThucDonActivity.this, ThemMoiMonAnActivity.class);
                 Bundle data = new Bundle();
-                data.putSerializable("nhahang", b);
+                data.putSerializable("cafe", b);
                 themMonAn.putExtras(data);
                 startActivityForResult(themMonAn,101);
             }
@@ -137,7 +137,7 @@ public class XemThucDonActivity extends AppCompatActivity {
                     fileCanXoa.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            nhaHang.child(b.getId().toString()).child("thucDon").child(moi.getId()).removeValue();
+                            quanCafe.child(b.getId().toString()).child("thucDon").child(moi.getId()).removeValue();
                             Toast.makeText(XemThucDonActivity.this, "Xóa món ăn thành công"
                                     , Toast.LENGTH_SHORT).show();
                         }

@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,7 +45,7 @@ public class ThemMoiMonAnActivity extends AppCompatActivity {
     Button btnHuyBo, btnXacNhan,btnChonAnh,btnChupanh;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    DatabaseReference nhaHang = databaseReference.child("nhaHang");
+    DatabaseReference quanCafe = databaseReference.child("quanCafe");
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
 
@@ -121,8 +121,8 @@ public class ThemMoiMonAnActivity extends AppCompatActivity {
                 if (tenMonAn.length() > 0 && moTaMonAn.length() > 0 && giaMonAn > 0){
                     Intent intent = getIntent();
                     Bundle data = intent.getExtras();
-                    NhaHang a = (NhaHang) data.getSerializable("nhahang");
-                    String idmonan = nhaHang.child(a.getId()).child("thucDon").push().getKey().toString();
+                    QuanCafe a = (QuanCafe) data.getSerializable("cafe");
+                    String idmonan = quanCafe.child(a.getId()).child("thucDon").push().getKey().toString();
                     monAn ma = new monAn(idmonan,tenMonAn,"",giaMonAn,moTaMonAn);
                     StorageReference anhMonAn  =
                             storageReference.child("anhMonAn").child(a.getId()).child(idmonan + ".jpg");
@@ -141,7 +141,7 @@ public class ThemMoiMonAnActivity extends AppCompatActivity {
                                     String linkAnhMonAn = uri.toString();
                                     ma.setHinhAnhMinhHoa(linkAnhMonAn);
                                     // Set value cho mon an
-                                    nhaHang.child(a.getId().toString())
+                                    quanCafe.child(a.getId().toString())
                                             .child("thucDon").child(idmonan).setValue(ma).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {

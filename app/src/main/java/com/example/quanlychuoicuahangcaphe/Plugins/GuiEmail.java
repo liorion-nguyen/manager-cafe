@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.R;
 
 import java.util.Properties;
@@ -44,10 +44,10 @@ public class GuiEmail extends AppCompatActivity {
         // Lay itent
         Intent intent = getIntent();
         Bundle data = intent.getExtras();
-        NhaHang a = (NhaHang) data.getSerializable("nhahang");
+        QuanCafe a = (QuanCafe) data.getSerializable("cafe");
 
         String email = a.getEmail();
-        String name = a.getTenNhaHang();
+        String name = a.getName();
 
         edtEmailTo = findViewById(R.id.edtEmailTo);
         edtContent = findViewById(R.id.edtContent);

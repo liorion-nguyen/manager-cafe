@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.example.quanlychuoicuahangcaphe.Plugins.PhongtoAnh;
 
@@ -24,7 +24,7 @@ public class XemMonAn extends AppCompatActivity {
     TextView tvTenMonAn, tvMoTaMonAn, tvGiaMonAn;
     ImageView ivAnhMonAn;
     Button btnSuaMonAn, btnXoaMonAn, btnTroLai;
-    NhaHang a = new NhaHang();
+    QuanCafe a = new QuanCafe();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class XemMonAn extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle data = intent.getExtras();
         monAn ma = (monAn) data.getSerializable("monan");
-        a = (NhaHang) data.getSerializable("nhahang");
+        a = (QuanCafe) data.getSerializable("cafe");
         tvTenMonAn.setText(ma.getTenMonAn());
         tvMoTaMonAn.setText("Mô tả món ăn : " + ma.getMoTaMonAn());
         tvGiaMonAn.setText("Giá món ăn : " + (int) ma.getGiaMonAn() + "vnđ");
@@ -78,7 +78,7 @@ public class XemMonAn extends AppCompatActivity {
                 Intent xemMonAn = new Intent(XemMonAn.this, SuaMonAnActivity.class);
                 Bundle data = new Bundle();
                 data.putSerializable("monan",ma);
-                data.putSerializable("nhahang",a);
+                data.putSerializable("cafe",a);
                 xemMonAn.putExtras(data);
                 startActivityForResult(xemMonAn,105);
             }

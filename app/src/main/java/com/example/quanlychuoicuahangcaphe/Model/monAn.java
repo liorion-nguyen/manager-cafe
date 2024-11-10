@@ -20,7 +20,6 @@ public class monAn implements Serializable {
     }
 
 
-
     public String getTenMonAn() {
         return tenMonAn;
     }

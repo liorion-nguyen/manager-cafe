@@ -17,9 +17,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.example.quanlychuoicuahangcaphe.Adapter.NhaHangAdapter;
+import com.example.quanlychuoicuahangcaphe.Adapter.QuanCafeAdapter;
 
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,13 +33,13 @@ import java.util.ArrayList;
 
 
 public class AdminActivity extends AppCompatActivity {
-    FloatingActionButton fabThemNhaHang;
-    ListView lvNhaHang;
-    ArrayList<NhaHang> listNhaHang;
-    NhaHangAdapter nhaHangAdapter;
+    FloatingActionButton fabThemQuanCafe;
+    ListView lvQuanCafe;
+    ArrayList<QuanCafe> listQuanCafe;
+    QuanCafeAdapter quanCafeAdapter;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    DatabaseReference nhaHang = databaseReference.child("nhaHang");
+    DatabaseReference quanCafe = databaseReference.child("cafe");
 
 
     @Override
@@ -48,17 +48,17 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         // Ánh xạ
-        fabThemNhaHang = findViewById(R.id.fabThemNhaHang);
-        lvNhaHang = findViewById(R.id.lvNhaHang);
-        listNhaHang = new ArrayList<>();
-        nhaHangAdapter = new NhaHangAdapter(AdminActivity.this,R.layout.lv_item_nha_hang,listNhaHang);
-        lvNhaHang.setAdapter(nhaHangAdapter);
+        fabThemQuanCafe = findViewById(R.id.fabThemNhaHang);
+        lvQuanCafe = findViewById(R.id.lvNhaHang);
+        listQuanCafe = new ArrayList<>();
+        quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this,R.layout.lv_item_nha_hang,listQuanCafe);
+        lvQuanCafe.setAdapter(quanCafeAdapter);
 
-        fabThemNhaHang.setOnClickListener(new View.OnClickListener() {
+        fabThemQuanCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent themMoiNhaHang = new Intent(AdminActivity.this, ThemMoiNhaHangActivity.class);
-                startActivity(themMoiNhaHang);
+                Intent themMoiQuanCafe = new Intent(AdminActivity.this, AddACafeActivity.class);
+                startActivity(themMoiQuanCafe);
             }
         });
         isConnected();
@@ -78,12 +78,12 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchView.clearFocus();
-                nhaHangAdapter.getFilter().filter(query);
+                quanCafeAdapter.getFilter().filter(query);
                 return false;
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-                nhaHangAdapter.getFilter().filter(newText);
+                quanCafeAdapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -115,17 +115,17 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        nhaHangAdapter.notifyDataSetChanged();
+        quanCafeAdapter.notifyDataSetChanged();
     }
 
     // Đọc dữ liệu từ FireBase rồi lưu vào list nhà hàng
     private void docDuLieu(){
-        nhaHang.addValueEventListener(new ValueEventListener() {
+        quanCafe.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listNhaHang.clear();
+                listQuanCafe.clear();
                 for (DataSnapshot data: snapshot.getChildren()){
-                    NhaHang nh = data.getValue(NhaHang.class);
+                    QuanCafe nh = data.getValue(QuanCafe.class);
                     DataSnapshot data4 = data.child("danhGia");
                     float sumda=0;
                     float arrda=0;
@@ -147,19 +147,19 @@ public class AdminActivity extends AppCompatActivity {
                             listMonAn.add(ma);
                         }
                     }
-                    DataSnapshot dataCacAnhNhaHang = data.child("cacAnhNhaHang");
+                    DataSnapshot dataCacAnhQuanCafe = data.child("cacAnhQuanCafe");
                     ArrayList<String> hinhanhs = new ArrayList<>();
-                    for (DataSnapshot data3 : dataCacAnhNhaHang.getChildren()){
+                    for (DataSnapshot data3 : dataCacAnhQuanCafe.getChildren()){
                         hinhanhs.add(data3.getValue().toString());
                     }
 
                     nh.setListHinhAnh(hinhanhs);
                     nh.setListMonAn(listMonAn);
                     if (nh != null){
-                        listNhaHang.add(nh);
+                        listQuanCafe.add(nh);
                     }
                 }
-                nhaHangAdapter.notifyDataSetChanged();
+                quanCafeAdapter.notifyDataSetChanged();
             }
 
             @Override

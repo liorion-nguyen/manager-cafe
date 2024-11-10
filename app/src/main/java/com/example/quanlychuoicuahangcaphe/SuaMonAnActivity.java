@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
-import com.example.quanlychuoicuahangcaphe.Model.NhaHang;
+import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -67,7 +67,7 @@ public class SuaMonAnActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle data = intent.getExtras();
         monAn ma = (monAn) data.getSerializable("monan");
-        NhaHang a = (NhaHang) data.getSerializable("nhahang");
+        QuanCafe a = (QuanCafe) data.getSerializable("cafe");
 
         ActivityResultLauncher ChupanhLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
