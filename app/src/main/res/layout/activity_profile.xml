@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2d9c5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:src="@drawable/back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                />
+            <TextView
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Trang cá nhân"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <!--        <ImageView-->
+        <!--            android:src="@drawable/nhahang"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            />-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgAnh"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
+            android:src="@drawable/nhahang"
+            />
+        <TextView
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:text= "Tên"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edtTen"
+            android:background="@drawable/custom_edittext_profile"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:text= "Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edtEmail"
+            android:background="@drawable/custom_edittext_profile"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:text= "Số điện thoại"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edtSDT"
+            android:background="@drawable/custom_edittext_profile"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:text= "Ngày sinh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edtNgaySinh"
+            android:background="@drawable/custom_edittext_profile"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
