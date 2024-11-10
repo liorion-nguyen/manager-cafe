@@ -1,0 +1,8 @@
+<!-- transparent_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="10dp"/>
+    <stroke android:width="2dp" android:color="#069C54"/>
+    <item android:state_pressed="true" android:drawable="@android:color/transparent" />
+    <solid android:color="@android:color/transparent"/>
+</shape>

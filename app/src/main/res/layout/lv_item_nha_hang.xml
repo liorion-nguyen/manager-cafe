@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C5C5C5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="5dp"
+                card_view:cardCornerRadius="30px">
+
+                <ImageView
+                    android:id="@+id/ivAnhNhaHang"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/nhahang" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTenNhaHang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="left"
+                    android:text="Tên nhà hàng"
+                    android:textColor="#069C54"
+                    android:textSize="8pt"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:gravity="right"
+                    android:text="Đặt bàn (Booking)"
+                    android:textColor="#707070"
+                    android:textSize="6pt"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSoDienThoai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:text="Số điện thoại: 0379273403"
+                    android:textAlignment="textEnd"
+                    android:textSize="5pt"
+                    android:textStyle="italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:text="Giờ mở cửa"
+                            android:textColor="#707070"
+                            android:textSize="6pt"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvGioMoCua"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5px"
+                            android:gravity="left"
+                            android:text="09:00 - 11:00"
+                            android:textColor="#707070"
+                            android:textSize="5pt" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="Địa chỉ"
+                            android:textColor="#707070"
+                            android:textSize="6pt"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDiaChi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10px"
+                            android:text="Mô tả nhà hàng tại đây !"
+                            android:textAlignment="textEnd"
+                            android:textSize="5pt" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActicity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2d9c5"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/background_login"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="COFFEE SHOP"
+                android:textColor="#48312c"
+                android:textSize="100px"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Welcome!"
+                android:textColor="#48312c"
+                android:textSize="50px" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200px"
+                android:gravity="center"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="800px"
+                    android:layout_height="100px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/button_create_account"
+                    android:orientation="horizontal"
+                    android:padding="10px">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/baseline_alternate_email_24" />
+                    <EditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/nothing"
+                        android:hint="Email"
+                        android:textColor="#48312c"
+                        android:textColorHint="#786C6A"
+                        android:fontFamily="sans-serif"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="800px"
+                    android:layout_height="100px"
+                    android:layout_marginBottom="100px"
+                    android:background="@drawable/button_create_account"
+                    android:orientation="horizontal"
+                    android:padding="10px">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/baseline_lock_outline_24" />
+                    <EditText
+                        android:id="@+id/edtMatKhau"
+                        android:layout_width="550px"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/nothing"
+                        android:hint="Mật khẩu"
+                        android:inputType="textPassword"
+                        android:textColor="#48312c"
+                        android:textColorHint="#786C6A"
+                        android:fontFamily="sans-serif"/>
+                    <ImageView
+                        android:id="@+id/imgPasswordInputType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/baseline_visibility_24"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnDangNhap"
+                    android:layout_width="600px"
+                    android:layout_height="100px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/button_login"
+                    android:text="Dăng nhập"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50px"
+                    android:gravity="bottom|center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bạn không nhớ mật khẩu? "
+                        android:textColor="#48312c"
+                        android:textSize="35px" />
+
+                    <TextView
+                        android:id="@+id/tvQuenMatKhau"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Quên mật khẩu"
+                        android:textColor="#48312c"
+                        android:textSize="45px" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
