@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".SuaMonAnActivity">
     <LinearLayout
+        android:background="#F8F4E1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -14,10 +15,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sửa món ăn"
+            android:text="SỬA MÓN ĂN"
             android:textSize="12pt"
+            android:textColor="#69472E"
             android:textAlignment="center"
-            android:textStyle="bold|italic"/>
+            android:textStyle="bold"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
                 android:text="Chụp ảnh"
                 android:layout_gravity="center"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#69472E"
                 android:layout_marginRight="20dp"/>
             <Button
                 android:id="@+id/btnChonAnh"
@@ -56,39 +58,65 @@
                 android:layout_height="wrap_content"
                 android:text="Chọn ảnh"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#69472E"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
 
-
-        <EditText
-            android:id="@+id/edtTenMonAn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="8pt"
-            android:hint="Tên món ăn"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtGiaMonAn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="8pt"
-            android:hint="Giá món ăn"/>
+            <EditText
+                android:id="@+id/edtTenMonAn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tên món ăn: "
+                android:background="@drawable/edittext_background"
+                android:textColorHint="69472E"
+                android:textSize="8pt"
+                android:textColor="#69472E"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                />
 
-        <EditText
-            android:id="@+id/edtMoTaMonAn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="8pt"
-            android:hint="Mô tả món ăn"/>
+            <EditText
+                android:id="@+id/edtGiaMonAn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Giá món ăn"
+                android:inputType="number"
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
+
+            <EditText
+                android:id="@+id/edtMoTaMonAn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mô tả món ăn"
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="8dp"
+
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             >
 
             <Button

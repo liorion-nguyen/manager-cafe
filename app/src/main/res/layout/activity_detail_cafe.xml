@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#9C7055"
+        android:background="#F8F4E1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,9 @@
                 android:text="Chi tiết quán cafe"
                 android:textAlignment="center"
                 android:textSize="16pt"
-                android:textStyle="bold|italic" />
+                android:textStyle="bold|italic"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"/>
 
             <TextView
                 android:id="@+id/tvTenQuanCafe"
@@ -37,7 +39,9 @@
                 android:text="Tên quán cafe"
                 android:textAlignment="center"
                 android:textSize="12pt"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="200dp"
@@ -82,7 +86,7 @@
                     android:isIndicator="true"
                     android:numStars="5"
                     android:progressBackgroundTint="#C0C0C0"
-                    android:progressTint="#069C54"
+                    android:progressTint="#FFC94A"
                     android:rating="4"
                     android:stepSize="0.05" />
             </LinearLayout>
@@ -93,7 +97,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Địa chỉ quán cafe :"
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"/>
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -101,7 +109,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Email : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
 
             <TextView
                 android:id="@+id/tvSoDienThoai"
@@ -109,7 +122,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Số điện thoại : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
 
             <TextView
                 android:id="@+id/tvGioMoCua"
@@ -117,7 +135,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Giờ mở cửa : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:background="@drawable/edittext_background"
+                android:padding="10dp"
+                />
 
             <TextView
                 android:id="@+id/tvMoTaQuanCafe"
@@ -125,7 +148,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Mô tả quán cafe : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
