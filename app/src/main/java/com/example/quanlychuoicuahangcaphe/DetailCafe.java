@@ -38,8 +38,9 @@ import java.util.HashMap;
 
 public class DetailCafe extends AppCompatActivity {
     TextView tvTenQuanCafe, tvDiaChiQuanCafe, tvEmail, tvSoDienThoai, tvGioMoCua, tvMoTaQuanCafe,textrating;
-    Button btnTroLai,btnXemAnhQuanCafe,btnXemThucDon,btnSuaQuanCafe,btnXoaAnhQuanCafe;
-    ImageButton GuiEmail,phone,sms,btnShowMap;
+
+    Button btnXemAnhQuanCafe,btnXemThucDon,btnSuaQuanCafe,btnXoaAnhQuanCafe;
+    ImageButton GuiEmail,phone,sms,btnShowMap,btnTroLai;
     ImageView ivAnhQuanCafe;
     RatingBar rating;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -59,7 +60,7 @@ public class DetailCafe extends AppCompatActivity {
         tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
         tvGioMoCua = findViewById(R.id.tvGioMoCua);
         tvMoTaQuanCafe = findViewById(R.id.tvMoTaQuanCafe);
-        btnTroLai = findViewById(R.id.btnTroLai);
+        btnTroLai = findViewById(R.id.imgBtnTroLai);
         btnXemAnhQuanCafe = findViewById(R.id.btnXemAnhQuanCafe);
         btnXemThucDon = findViewById(R.id.btnXemThucDon);
         btnSuaQuanCafe = findViewById(R.id.btnSuaQuanCafe);
