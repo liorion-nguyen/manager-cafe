@@ -23,16 +23,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="#69472E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ứng dụng quản lý nhà hàng"
+            android:layout_marginBottom="20px"
             android:gravity="center_horizontal"
-            android:textSize="12pt"
-            android:textStyle="bold"
+            android:text="Ứng dụng quản lý nhà hàng"
             android:textColor="#000"
-            android:layout_marginBottom="20px"/>
+            android:textSize="12pt"
+            android:textStyle="bold" />
+
         <ListView
             android:id="@+id/lvNhaHang"
             android:layout_width="match_parent"

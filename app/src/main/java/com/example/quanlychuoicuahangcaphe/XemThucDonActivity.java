@@ -165,16 +165,13 @@ public class XemThucDonActivity extends AppCompatActivity {
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
 
         cm.registerNetworkCallback
-                (
-                        builder.build(),
-                        new ConnectivityManager.NetworkCallback() {
-                            @Override
-                            public void onLost(Network network) {
-                                Intent intent = new Intent(XemThucDonActivity.this, CheckInternet.class);
-                                startActivity(intent);
-                            }
-                        }
-
+                (builder.build(), new ConnectivityManager.NetworkCallback() {
+                    @Override
+                    public void onLost(Network network) {
+                        Intent intent = new Intent(XemThucDonActivity.this, CheckInternet.class);
+                        startActivity(intent);
+                    }
+                }
                 );
     }
 }

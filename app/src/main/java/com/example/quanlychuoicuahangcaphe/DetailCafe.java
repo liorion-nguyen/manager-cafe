@@ -169,11 +169,11 @@ public class DetailCafe extends AppCompatActivity {
 
 
         tvTenQuanCafe.setText(a.getName());
-        tvDiaChiQuanCafe.setText("Địa chỉ : " + a.getAddress());
+        tvDiaChiQuanCafe.setText("Địa chỉ cửa hàng : " + a.getAddress());
         tvEmail.setText("Email : " + a.getEmail());
         tvSoDienThoai.setText("Số điện thoại : " + a.getPhoneNumber());
         tvGioMoCua.setText("Giờ mở cửa : " + a.getOpenTime());
-        tvMoTaQuanCafe.setText("Mô tả nhà hàng : " + a.getDescription());
+        tvMoTaQuanCafe.setText("Mô tả cửa hàng : " + a.getDescription());
         Glide.with(DetailCafe.this).load(a.getAnhQuanCafe()).into(ivAnhQuanCafe);
 
         ivAnhQuanCafe.setOnClickListener(new View.OnClickListener() {
