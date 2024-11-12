@@ -19,6 +19,7 @@ import com.example.quanlychuoicuahangcaphe.Model.User;
 import com.example.quanlychuoicuahangcaphe.Plugins.GuiEmail;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,7 +37,8 @@ import javax.mail.internet.MimeMessage;
 
 public class QuenMatKhauActivity extends AppCompatActivity {
     EditText edtEmail;
-    Button btnQuenMatKhau, btnHuy;
+    Button btnQuenMatKhau;
+    FloatingActionButton fabBack;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Users");
@@ -52,7 +54,7 @@ public class QuenMatKhauActivity extends AppCompatActivity {
     private void addViews() {
         edtEmail = findViewById(R.id.edtEmail);
         btnQuenMatKhau = findViewById(R.id.btnQuenMatKhau);
-        btnHuy = findViewById(R.id.btnHuy);
+        fabBack = findViewById(R.id.fabBack);
     }
 
     private void addEvents() {
@@ -105,7 +107,7 @@ public class QuenMatKhauActivity extends AppCompatActivity {
             });
         });
 
-        btnHuy.setOnClickListener(v -> {
+        fabBack.setOnClickListener(v -> {
             finish();
         });
 
