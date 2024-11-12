@@ -73,7 +73,7 @@ public class AddImageCafe extends AppCompatActivity {
         btnChonAnh = findViewById(R.id.btnChonAnh);
         btnThemAnh = findViewById(R.id.btnThemAnh);
         btnTroLai = findViewById(R.id.imgBtnTroLai);
-        lvCacAnhQuanCafe = findViewById(R.id.lvCacAnhQuanCafe);
+        lvCacAnhQuanCafe = findViewById(R.id.lvCacAnhCafe);
         ivChonAnh = findViewById(R.id.ivChonAnh);
         btnChupanh = findViewById(R.id.btnChupanh);
 
