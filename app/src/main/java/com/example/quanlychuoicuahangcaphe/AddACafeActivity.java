@@ -51,9 +51,9 @@ import java.util.UUID;
 
 public class AddACafeActivity extends AppCompatActivity {
     ImageView imgAnhCafe;
-    Button btnChonAnhCafe, btnHuyBo, btnXacNhan, btnThucDon, btnCacHinhAnhCafe, btnChupanh;
-    EditText edtTenCafe, edtDiaChiCafe, edtEmailCafe, edtSoDienThoaiCafe, edtMoTaCafe;
-    TimePicker tpGioMoCua, tpGioDongCua;
+    Button btnChonAnhCafe, btnCancel, btnConfirm, btnMenu, btnCacHinhAnhCafe, btnChupanh;
+    EditText edtName, edtAddress, edtEmail, edtPhone, edtDescription;
+    TimePicker tpOpenTime, tpCloseTime;
     DatabaseReference cafeRef = FirebaseDatabase.getInstance().getReference("cafe");
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
@@ -70,17 +70,17 @@ public class AddACafeActivity extends AppCompatActivity {
         isConnected();
         imgAnhCafe = findViewById(R.id.imgAnhCafe);
         btnChonAnhCafe = findViewById(R.id.btnChonAnhCafe);
-        btnHuyBo = findViewById(R.id.btnHuyBo);
-        btnXacNhan = findViewById(R.id.btnXacNhan);
-        btnThucDon = findViewById(R.id.btnThucDon);
+        btnCancel = findViewById(R.id.btnCancel);
+        btnConfirm = findViewById(R.id.btnConfirm);
+        btnMenu = findViewById(R.id.btnMenu);
         btnCacHinhAnhCafe = findViewById(R.id.btnCacHinhAnhCafe);
-        edtTenCafe = findViewById(R.id.edtTenQuanCaFe);
-        edtDiaChiCafe = findViewById(R.id.edtDiaChiQuanCaFe);
-        edtEmailCafe = findViewById(R.id.edtEmailQuanCaFe);
-        edtSoDienThoaiCafe = findViewById(R.id.edtSoDienThoaiQuanCaFe);
-        edtMoTaCafe = findViewById(R.id.edtMoTaQuanCaFe);
-        tpGioMoCua = findViewById(R.id.tpGioMoCua);
-        tpGioDongCua = findViewById(R.id.tpGioDongCua);
+        edtName = findViewById(R.id.edtName);
+        edtAddress = findViewById(R.id.edtAddress);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtPhone = findViewById(R.id.edtPhone);
+        edtDescription = findViewById(R.id.edtDescription);
+        tpOpenTime = findViewById(R.id.tpOpenTime);
+        tpCloseTime = findViewById(R.id.tpCloseTime);
         btnChupanh = findViewById(R.id.btnChupanh);
 
         ActivityResultLauncher ChupanhLaunch = registerForActivityResult(
@@ -122,7 +122,7 @@ public class AddACafeActivity extends AppCompatActivity {
             }
         });
 
-        btnHuyBo.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cafeRef.child(id).addValueEventListener(new ValueEventListener() {
@@ -162,66 +162,66 @@ public class AddACafeActivity extends AppCompatActivity {
             }
         });
 
-        btnXacNhan.setOnClickListener(new View.OnClickListener() {
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ArrayList<String> listHinhAnh = newCafe.getListHinhAnh(); // Lấy danh sách hình ảnh
-                String gioHoatDong = "";
-                int gioMoCua = tpGioMoCua.getHour();
-                int phutMoCua = tpGioMoCua.getMinute();
-                int gioDongCua = tpGioDongCua.getHour();
-                int phutDongCua = tpGioDongCua.getMinute();
+                String openTime = "";
+                int gioOpen = tpOpenTime.getHour();
+                int phutOpen = tpOpenTime.getMinute();
+                int gioClose = tpCloseTime.getHour();
+                int phutClose = tpCloseTime.getMinute();
 
                 // Format opening hours
-                if (gioMoCua < 10) {
-                    gioHoatDong += "0" + gioMoCua + ":";
+                if (gioOpen < 10) {
+                    openTime += "0" + gioOpen + ":";
                 } else {
-                    gioHoatDong += gioMoCua + ":";
+                    openTime += gioOpen + ":";
                 }
 
-                if (phutMoCua < 10) {
-                    gioHoatDong += "0" + phutMoCua + " - ";
+                if (phutOpen < 10) {
+                    openTime += "0" + phutOpen + " - ";
                 } else {
-                    gioHoatDong += phutMoCua + " - ";
+                    openTime += phutOpen + " - ";
                 }
 
-                if (gioDongCua < 10) {
-                    gioHoatDong += "0" + gioDongCua + ":";
+                if (gioClose < 10) {
+                    openTime += "0" + gioClose + ":";
                 } else {
-                    gioHoatDong += gioDongCua + ":";
+                    openTime += gioClose + ":";
                 }
 
-                if (phutDongCua < 10) {
-                    gioHoatDong += "0" + phutDongCua;
+                if (phutClose < 10) {
+                    openTime += "0" + phutClose;
                 } else {
-                    gioHoatDong += phutDongCua;
+                    openTime += phutClose;
                 }
 
                 // Get cafe details
-                String tenCafe = edtTenCafe.getText().toString().trim();
-                String diaChiCafe = edtDiaChiCafe.getText().toString().trim();
-                String soDienThoaiCafe = edtSoDienThoaiCafe.getText().toString().trim();
-                String emailCafe = edtEmailCafe.getText().toString().trim();
-                String moTaCafe = edtMoTaCafe.getText().toString().trim();
+                String name = edtName.getText().toString().trim();
+                String address = edtAddress.getText().toString().trim();
+                String phone = edtPhone.getText().toString().trim();
+                String email = edtEmail.getText().toString().trim();
+                String description = edtDescription.getText().toString().trim();
 
                 // Check if all fields are filled
-                if (tenCafe.length() > 0 && diaChiCafe.length() > 0 && soDienThoaiCafe.length() > 0 && emailCafe.length() > 0) {
+                if (name.length() > 0 && address.length() > 0 && phone.length() > 0 && email.length() > 0) {
                     // Set cafe data
-                    newCafe.setOpenTime(gioHoatDong);
-                    newCafe.setName(tenCafe);
-                    newCafe.setAddress(diaChiCafe);
-                    newCafe.setPhoneNumber(soDienThoaiCafe);
-                    newCafe.setEmail(emailCafe);
-                    newCafe.setDescription(moTaCafe);
+                    newCafe.setOpenTime(openTime);
+                    newCafe.setName(name);
+                    newCafe.setAddress(address);
+                    newCafe.setPhoneNumber(phone);
+                    newCafe.setEmail(email);
+                    newCafe.setDescription(description);
 
                     // Update Firebase database
-                    cafeRef.child(id).child("address").setValue(diaChiCafe);
-                    cafeRef.child(id).child("email").setValue(emailCafe);
-                    cafeRef.child(id).child("openTime").setValue(gioHoatDong);
+                    cafeRef.child(id).child("address").setValue(address);
+                    cafeRef.child(id).child("email").setValue(email);
+                    cafeRef.child(id).child("openTime").setValue(openTime);
                     cafeRef.child(id).child("id").setValue(id);
-                    cafeRef.child(id).child("description").setValue(moTaCafe);
-                    cafeRef.child(id).child("phoneNumber").setValue(soDienThoaiCafe);
-                    cafeRef.child(id).child("name").setValue(tenCafe);
+                    cafeRef.child(id).child("description").setValue(description);
+                    cafeRef.child(id).child("phoneNumber").setValue(phone);
+                    cafeRef.child(id).child("name").setValue(name);
                     cafeRef.child(id).child("listImages").setValue(listHinhAnh); // Thêm danh sách hình ảnh
 
                     // Upload avatar image
@@ -272,7 +272,7 @@ public class AddACafeActivity extends AppCompatActivity {
         });
 
         // Nút xem thực đơn
-        btnThucDon.setOnClickListener(new View.OnClickListener() {
+        btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent xemThucDon = new Intent(AddACafeActivity.this, XemThucDonActivity.class);

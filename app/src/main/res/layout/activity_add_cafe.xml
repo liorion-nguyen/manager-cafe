@@ -99,31 +99,31 @@
             android:layout_marginEnd="8dp"
             />
         <EditText
-            android:id="@+id/edtTenQuanCaFe"
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập vào tên quán café ...." />
 
         <EditText
-            android:id="@+id/edtDiaChiQuanCaFe"
+            android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập vào địa chỉ quán café...." />
 
         <EditText
-            android:id="@+id/edtEmailQuanCaFe"
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập vào email quán café...." />
 
         <EditText
-            android:id="@+id/edtSoDienThoaiQuanCaFe"
+            android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập vào số điện thoại quán café...." />
 
         <EditText
-            android:id="@+id/edtMoTaQuanCaFe"
+            android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mô tả quán café...." />
@@ -147,7 +147,7 @@
                 />
 
             <TimePicker
-                android:id="@+id/tpGioMoCua"
+                android:id="@+id/tpOpenTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -174,7 +174,7 @@
                 />
 
             <TimePicker
-                android:id="@+id/tpGioDongCua"
+                android:id="@+id/tpCloseTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -189,7 +189,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnThucDon"
+                android:id="@+id/btnMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Thực đơn"
@@ -214,7 +214,7 @@
             >
 
             <Button
-                android:id="@+id/btnHuyBo"
+                android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hủy bỏ"
@@ -224,7 +224,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/btnXacNhan"
+                android:id="@+id/btnConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Xác nhận"
