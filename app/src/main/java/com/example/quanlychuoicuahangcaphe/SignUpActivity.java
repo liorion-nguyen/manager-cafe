@@ -111,7 +111,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     alertDialog.setMessage("Đăng ký thành công!");
                                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
                                         String id = myRef.push().getKey();
-                                        User user = new User(id, HoVaTen, Email, MatKhau);
+                                        User user = new User(id, HoVaTen, Email, MatKhau, "", "");
                                         user.setId(id);
 
                                         myRef.child(id).setValue(user);

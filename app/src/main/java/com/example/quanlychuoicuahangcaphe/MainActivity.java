@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String email = sharedPreferences.getString("email", "");
+        if(email != "") {
+            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+            startActivity(intent);
+        }
         btnDangNhap.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, LoginActicity.class);
             startActivity(intent);
