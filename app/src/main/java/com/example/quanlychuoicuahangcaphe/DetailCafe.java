@@ -223,11 +223,11 @@ public class DetailCafe extends AppCompatActivity {
         btnMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent guiemail = new Intent( DetailCafe.this, com.example.quanlychuoicuahangcaphe.Plugins.GuiEmail.class);
+                Intent sendEmail = new Intent( DetailCafe.this, com.example.quanlychuoicuahangcaphe.Plugins.SendEmail.class);
                 Bundle data= new Bundle();
                 data.putSerializable("cafe",a);
-                guiemail.putExtras(data);
-                startActivityForResult(guiemail, 105);
+                sendEmail.putExtras(data);
+                startActivityForResult(sendEmail, 105);
             }
         });
 

@@ -28,6 +28,7 @@ import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
 import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -37,10 +38,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class UpdateCafe extends AppCompatActivity {
     ImageView ivAvatar;
-    Button btnChonAnh,btnHuyBo, btnXacNhan,btnChupanh;
+    Button btnChonAnh,btnHuyBo, btnXacNhan,btnChupanh, btnCacHinhAnhCafe;
     EditText edtName, edtPhoneNumber, edtEmail, edtDescription, edtAddress;
     TimePicker tpOpenTime, tpCloseTime;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -48,6 +52,8 @@ public class UpdateCafe extends AppCompatActivity {
     DatabaseReference quanCafe = databaseReference.child("cafe");
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
+    ArrayList<Uri> selectedImageUris = new ArrayList<>(); // To store selected image URIs
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +73,7 @@ public class UpdateCafe extends AppCompatActivity {
         tpCloseTime = findViewById(R.id.tpCloseTime);
         tpOpenTime = findViewById(R.id.tpOpenTime);
         btnChupanh = findViewById(R.id.btnChupanh);
+        btnCacHinhAnhCafe = findViewById(R.id.btnCacHinhAnhCafe);
 
         // Lay itent
         Intent intent = getIntent();
@@ -119,6 +126,17 @@ public class UpdateCafe extends AppCompatActivity {
                 }
         );
 
+        btnCacHinhAnhCafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UpdateCafe.this, AddImageCafe.class);
+                Bundle data = new Bundle();
+                data.putSerializable("cafe", a);
+                intent.putExtras(data);
+                startActivityForResult(intent, 130);
+            }
+        });
+
         btnChupanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,12 +145,17 @@ public class UpdateCafe extends AppCompatActivity {
             }
         });
 
-        ActivityResultLauncher chonAnhLauncher = registerForActivityResult(
-                new ActivityResultContracts.GetContent(),
-                new ActivityResultCallback<Uri>() {
+        ActivityResultLauncher<String> chonAnhLauncher = registerForActivityResult(
+                new ActivityResultContracts.GetMultipleContents(),
+                new ActivityResultCallback<List<Uri>>() {
                     @Override
-                    public void onActivityResult(Uri o) {
-                        ivAvatar.setImageURI(o);
+                    public void onActivityResult(List<Uri> uris) {
+                        selectedImageUris.clear(); // Clear previous selections
+                        selectedImageUris.addAll(uris); // Add new selections
+                        // Optionally, you can display the first selected image
+                        if (!uris.isEmpty()) {
+                            ivAvatar.setImageURI(uris.get(0)); // Display the first image
+                        }
                     }
                 }
         );
@@ -202,55 +225,38 @@ public class UpdateCafe extends AppCompatActivity {
                     quanCafe.child(a.getId()).child("name").setValue(name);
                     quanCafe.child(a.getId()).child("phoneNumber").setValue(phoneNumber);
 
-                    // Đoạn thêm ảnh vào storage + get link download nếu đã đổi ảnh / sửa ảnh
-                    StorageReference avatar  =
-                            storageReference.child("avatar").child(a.getId()).child( a.getId().toString() + ".jpg");
-
-                    BitmapDrawable bitmapDrawable = (BitmapDrawable) ivAvatar.getDrawable();
-                    Bitmap bitmap = bitmapDrawable.getBitmap();
-                    ByteArrayOutputStream baoStream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baoStream);
-                    byte[] imgData = baoStream.toByteArray();
-                    avatar.putBytes(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            avatar.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    String linkHinhAnh = uri.toString();
-                                    moi.setAnhQuanCafe(linkHinhAnh);
-                                    // Set value cho mon an
-                                    quanCafe.child(a.getId().toString())
-                                            .child("avatar").setValue(linkHinhAnh).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()){
-                                                        Toast.makeText(UpdateCafe.this,
-                                                                "Sửa quán cà phê thành công", Toast.LENGTH_SHORT).show();
-                                                        Intent intent1 = new Intent();
-                                                        Bundle data = new Bundle();
-                                                        data.putSerializable("quanCafe",moi);
-                                                        intent1.putExtras(data);
-                                                        setResult(104,intent1);
-                                                        finish();
-                                                    } else {
-                                                        Toast.makeText(UpdateCafe.this,
-                                                                "Sửa quán cà phê thất bại, lỗi : " + task.getException().toString(),
-                                                                Toast.LENGTH_SHORT).show();
-                                                        finish();
-                                                    }
-                                                }
-                                            });
-                                }
-                            });
-                        }
-                    });
+                    // Upload all selected images
+                    for (Uri imageUri : selectedImageUris) {
+                        uploadImageToFirebase(imageUri, a.getId());
+                    }
                 } else {
                     Toast.makeText(UpdateCafe.this, "Vui lòng nhập vào đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+    private void uploadImageToFirebase(Uri imageUri, String cafeId) {
+        StorageReference imageRef = storageReference.child("avatar").child(cafeId).child(UUID.randomUUID().toString() + ".jpg");
+        imageRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // Add the image URL to the cafe's list of images
+                        quanCafe.child(cafeId).child("listImages").push().setValue(uri.toString());
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(UpdateCafe.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     void isConnected() {
         ConnectivityManager cm
                 = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
