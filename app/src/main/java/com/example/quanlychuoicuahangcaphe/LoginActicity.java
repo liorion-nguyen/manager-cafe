@@ -1,6 +1,7 @@
 package com.example.quanlychuoicuahangcaphe;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.Button;
@@ -71,6 +72,12 @@ public class LoginActicity extends AppCompatActivity {
                             }
                         }
                         if(!check) {
+                            // Lưu thông tin tài khoản vào SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("email", email); // Lưu email
+                            editor.apply();
+
                             AlertDialog alertDialog = new AlertDialog.Builder(LoginActicity.this).create();
                             alertDialog.setTitle("Thông báo");
                             alertDialog.setMessage("Đăng nhập thành công!");
