@@ -24,6 +24,7 @@ import com.example.quanlychuoicuahangcaphe.Model.User;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +37,8 @@ import java.util.function.BiConsumer;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText edtHoVaTen, edtEmail, edtMatKhau, edtXacNhanMatKhau;
-    Button btnDangKy, btnHuy;
+    Button btnDangKy;
+    FloatingActionButton fabBack;
     ImageView imgPasswordInputType, imgRePasswordInputType;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Users");
@@ -56,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtMatKhau = findViewById(R.id.edtMatKhau);
         edtXacNhanMatKhau = findViewById(R.id.edtXacNhanMatKhau);
         btnDangKy = findViewById(R.id.btnDangKy);
-        btnHuy = findViewById(R.id.btnHuy);
+        fabBack = findViewById(R.id.fabBack);
         imgPasswordInputType = findViewById(R.id.imgPasswordInputType);
         imgRePasswordInputType = findViewById(R.id.imgRePasswordInputType);
     }
@@ -158,7 +160,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        btnHuy.setOnClickListener(v -> {
+        fabBack.setOnClickListener(v -> {
             Intent resultIntent = getIntent();
             setResult(RESULT_CANCELED, resultIntent);
             finish();

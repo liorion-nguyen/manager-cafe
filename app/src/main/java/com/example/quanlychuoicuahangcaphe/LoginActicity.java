@@ -22,12 +22,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quanlychuoicuahangcaphe.Model.User;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Map;
 
 public class LoginActicity extends AppCompatActivity {
+    FloatingActionButton fabBack;
     EditText edtEmail, edtMatKhau;
     Button btnDangNhap;
     TextView tvQuenMatKhau;
@@ -48,6 +50,7 @@ public class LoginActicity extends AppCompatActivity {
         btnDangNhap = findViewById(R.id.btnDangNhap);
         tvQuenMatKhau = findViewById(R.id.tvQuenMatKhau);
         imgPasswordInputType = findViewById(R.id.imgPasswordInputType);
+        fabBack = findViewById(R.id.fabBack);
     }
 
     private void addEvents() {
@@ -113,6 +116,10 @@ public class LoginActicity extends AppCompatActivity {
         tvQuenMatKhau.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActicity.this, QuenMatKhauActivity.class);
             startActivity(intent);
+        });
+
+        fabBack.setOnClickListener(v -> {
+            finish();
         });
     }
 }
