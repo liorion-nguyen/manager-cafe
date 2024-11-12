@@ -12,8 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#9C7055"
+        android:paddingTop="15dp"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
             android:textSize="12pt"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="#707070"
+            android:textColor="#E0C0A9"
             />
 
         <androidx.cardview.widget.CardView
@@ -52,16 +53,18 @@
                 android:layout_height="wrap_content"
                 android:text="Chụp ảnh"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:background="@drawable/primarybutton"
+                android:textColor="#EDE0CF"
+                android:shadowColor="#6A4731"
                 android:layout_gravity="center"/>
             <Button
                 android:id="@+id/btnChonAnh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chọn ảnh"
-                android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:background="@drawable/primarybutton"
+                android:textColor="#EDE0CF"
+                android:shadowColor="#6A4731"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -132,11 +135,6 @@
                 android:layout_marginTop="8dp"
                 />
 
-            <TimePicker
-                android:id="@+id/tpOpenTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
         </LinearLayout>
 
         <!--        Time Picker 2 -->
@@ -162,6 +160,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+
+            <TimePicker
+                android:id="@+id/tpGioMoCua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

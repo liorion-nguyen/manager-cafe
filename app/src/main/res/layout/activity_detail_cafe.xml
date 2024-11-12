@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#9C7055"
+        android:background="#F8F4E1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,13 +21,24 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/imgBtnTroLai"
+                android:layout_width="45dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="#F8F4E1"
+                android:src="@drawable/baseline_arrow_back_24" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chi tiết quán cafe"
                 android:textAlignment="center"
                 android:textSize="16pt"
-                android:textStyle="bold|italic" />
+                android:textStyle="bold|italic"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"/>
 
             <TextView
                 android:id="@+id/tvName"
@@ -37,7 +48,9 @@
                 android:text="Tên quán cafe"
                 android:textAlignment="center"
                 android:textSize="12pt"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="200dp"
@@ -82,7 +95,7 @@
                     android:isIndicator="true"
                     android:numStars="5"
                     android:progressBackgroundTint="#C0C0C0"
-                    android:progressTint="#069C54"
+                    android:progressTint="#FFC94A"
                     android:rating="4"
                     android:stepSize="0.05" />
             </LinearLayout>
@@ -93,7 +106,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Địa chỉ quán cafe :"
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"/>
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -101,7 +118,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Email : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
 
             <TextView
                 android:id="@+id/tvPhoneNumber"
@@ -109,7 +131,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Số điện thoại : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
 
             <TextView
                 android:id="@+id/tvOpenTime"
@@ -117,7 +144,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Giờ mở cửa : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"
+                android:background="@drawable/edittext_background"
+                android:padding="10dp"
+                />
 
             <TextView
                 android:id="@+id/tvDescription"
@@ -125,7 +157,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
                 android:text="Mô tả quán cafe : "
-                android:textSize="8pt" />
+                android:textSize="8pt"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,46 +233,29 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnDeleteCafe"
+                android:id="@+id/btnSuaQuanCafe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/primarybutton"
+                android:text="Sửa thông tin quán "
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnXoaAnhQuanCafe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/dangerbutton"
                 android:text="Xóa quán cafe"
                 android:textColor="@color/white" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/primarybutton"
-                    android:text="Trở lại"
-                    android:textColor="@color/white" />
-
-                <Button
-                    android:id="@+id/btnEditCafe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/primarybutton"
-                    android:text="Sửa "
-                    android:textColor="@color/white" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

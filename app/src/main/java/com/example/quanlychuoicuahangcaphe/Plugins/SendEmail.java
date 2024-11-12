@@ -53,7 +53,7 @@ public class SendEmail extends AppCompatActivity {
         edtContent = findViewById(R.id.edtContent);
         edtSubject = findViewById(R.id.edtSubject);
         btnSend = findViewById(R.id.btnSend);
-        btnTroLai = findViewById(R.id.btnTroLai);
+        btnTroLai = findViewById(R.id.imgBtnTroLai);
         TenNH = findViewById(R.id.tenNH);
 
         edtEmailTo.setText(email);

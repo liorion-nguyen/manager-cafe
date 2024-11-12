@@ -37,11 +37,12 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 
 public class DetailCafe extends AppCompatActivity {
-    TextView tvName, tvAddress, tvEmail, tvPhoneNumber, tvOpenTime, tvDescription,tvRating;
-    Button btnBack,btnShowImage,btnShowMenu,btnEditCafe,btnDeleteCafe;
-    ImageButton btnMail,btnPhone,btnSms,btnShowMap;
-    ImageView ivAvatar;
-    RatingBar ratingBar;
+    TextView tvTenQuanCafe, tvDiaChiQuanCafe, tvEmail, tvSoDienThoai, tvGioMoCua, tvMoTaQuanCafe,textrating;
+
+    Button btnXemAnhQuanCafe,btnXemThucDon,btnSuaQuanCafe,btnXoaAnhQuanCafe;
+    ImageButton GuiEmail,phone,sms,btnShowMap,btnTroLai;
+    ImageView ivAnhQuanCafe;
+    RatingBar rating;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     DatabaseReference quanCafe = databaseReference.child("cafe");
@@ -56,14 +57,14 @@ public class DetailCafe extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         tvAddress = findViewById(R.id.tvAddress);
         tvEmail = findViewById(R.id.tvEmail);
-        tvPhoneNumber = findViewById(R.id.tvPhoneNumber);
-        tvOpenTime = findViewById(R.id.tvOpenTime);
-        tvDescription = findViewById(R.id.tvDescription);
-        btnBack = findViewById(R.id.btnBack);
-        btnShowImage = findViewById(R.id.btnShowImage);
-        btnShowMenu = findViewById(R.id.btnShowMenu);
-        btnEditCafe = findViewById(R.id.btnEditCafe);
-        ivAvatar = findViewById(R.id.ivAvatar);
+        tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
+        tvGioMoCua = findViewById(R.id.tvGioMoCua);
+        tvMoTaQuanCafe = findViewById(R.id.tvMoTaQuanCafe);
+        btnTroLai = findViewById(R.id.imgBtnTroLai);
+        btnXemAnhQuanCafe = findViewById(R.id.btnXemAnhQuanCafe);
+        btnXemThucDon = findViewById(R.id.btnXemThucDon);
+        btnSuaQuanCafe = findViewById(R.id.btnSuaQuanCafe);
+        ivAnhQuanCafe = findViewById(R.id.ivAnhQuanCafe);
         btnShowMap = findViewById(R.id.btnShowMap);
         btnDeleteCafe = findViewById(R.id.btnDeleteCafe);
 
