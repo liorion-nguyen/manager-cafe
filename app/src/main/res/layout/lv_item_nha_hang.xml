@@ -40,7 +40,7 @@
                     card_view:cardCornerRadius="30px">
 
                     <ImageView
-                        android:id="@+id/ivAnhNhaHang"
+                        android:id="@+id/ivAvatar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -55,7 +55,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvTenNhaHang"
+                        android:id="@+id/tvName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -76,7 +76,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvSoDienThoai"
+                        android:id="@+id/tvPhoneNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20px"
@@ -106,7 +106,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvGioMoCua"
+                                android:id="@+id/tvOpenTime"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5px"
@@ -132,7 +132,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvDiaChi"
+                                android:id="@+id/tvAddress"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="#25221F"

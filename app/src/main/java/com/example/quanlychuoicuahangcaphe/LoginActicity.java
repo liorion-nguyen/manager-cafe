@@ -10,17 +10,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.quanlychuoicuahangcaphe.Model.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Map;
+
 public class LoginActicity extends AppCompatActivity {
     EditText edtEmail, edtMatKhau;
     Button btnDangNhap;
     TextView tvQuenMatKhau;
     ImageView imgPasswordInputType;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +56,40 @@ public class LoginActicity extends AppCompatActivity {
             if(email.equals("") && matKhau.equals("")){
                 Toast.makeText(this, "Vui lòng nhập Email và Mật Khẩu", Toast.LENGTH_SHORT).show();
             } else {
-                if(email.equals("admin") && matKhau.equals("admin")) {
-                    Intent intent = new Intent(LoginActicity.this, AdminActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(this, "Email hoặc Mật Khẩu chưa đúng!", Toast.LENGTH_SHORT).show();
-                }
+                myRef.getRef().get().addOnCompleteListener(task -> {
+                    if(!task.isSuccessful()) {
+                        Toast.makeText(this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+                    } else {
+                        boolean check = true;
+                        Map<String, User> userList = (Map<String, User>) task.getResult().getValue();
+                        for(Map.Entry<String, User> entry : userList.entrySet()) {
+                            String id = entry.getKey();
+                            Map<String, String> u = (Map<String, String>) entry.getValue();
+                            if(u.get("email").equals(email)) {
+                                check = false;
+                                break;
+                            }
+                        }
+                        if(!check) {
+                            AlertDialog alertDialog = new AlertDialog.Builder(LoginActicity.this).create();
+                            alertDialog.setTitle("Thông báo");
+                            alertDialog.setMessage("Đăng nhập thành công!");
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
+                                Intent intent = new Intent(LoginActicity.this, AdminActivity.class);
+                                startActivity(intent);
+                            });
+                            alertDialog.show();
+                        } else {
+                            AlertDialog alertDialog = new AlertDialog.Builder(LoginActicity.this).create();
+                            alertDialog.setTitle("Thông báo");
+                            alertDialog.setMessage("Email hoặc Mật Khẩu chưa đúng!");
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
+                                dialog.dismiss();
+                            });
+                            alertDialog.show();
+                        }
+                    }
+                });
             }
         });
 

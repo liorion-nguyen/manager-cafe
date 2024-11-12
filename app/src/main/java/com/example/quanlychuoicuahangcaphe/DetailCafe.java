@@ -45,7 +45,7 @@ public class DetailCafe extends AppCompatActivity {
     RatingBar rating;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    DatabaseReference quanCafe = databaseReference.child("quanCafe");
+    DatabaseReference quanCafe = databaseReference.child("cafe");
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
     QuanCafe a = new QuanCafe();
@@ -54,8 +54,8 @@ public class DetailCafe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_cafe);
         // Ánh xạ
-        tvTenQuanCafe = findViewById(R.id.tvTenQuanCafe);
-        tvDiaChiQuanCafe = findViewById(R.id.tvDiaChiQuanCafe);
+        tvName = findViewById(R.id.tvName);
+        tvAddress = findViewById(R.id.tvAddress);
         tvEmail = findViewById(R.id.tvEmail);
         tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
         tvGioMoCua = findViewById(R.id.tvGioMoCua);
@@ -66,13 +66,13 @@ public class DetailCafe extends AppCompatActivity {
         btnSuaQuanCafe = findViewById(R.id.btnSuaQuanCafe);
         ivAnhQuanCafe = findViewById(R.id.ivAnhQuanCafe);
         btnShowMap = findViewById(R.id.btnShowMap);
-        btnXoaAnhQuanCafe = findViewById(R.id.btnXoaAnhQuanCafe);
+        btnDeleteCafe = findViewById(R.id.btnDeleteCafe);
 
-        GuiEmail = findViewById(R.id.mail);
-        phone = findViewById(R.id.phone);
-        sms= findViewById(R.id.sms);
-        rating = findViewById(R.id.rating);
-        textrating = findViewById(R.id.textrating);
+        btnMail = findViewById(R.id.btnMail);
+        btnPhone = findViewById(R.id.btnPhone);
+        btnSms = findViewById(R.id.btnSms);
+        ratingBar = findViewById(R.id.ratingBar);
+        tvRating = findViewById(R.id.tvRating);
 
 
 
@@ -80,10 +80,11 @@ public class DetailCafe extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle data =  intent.getExtras();
         a = (QuanCafe) data.getSerializable("cafe");
+        System.out.println(a.getListHinhAnh());
 
         Float rate = (float) Math.ceil(a.getTb() * 10) / 10;
-        rating.setRating(rate);
-        textrating.setText(rate+"/5");
+        ratingBar.setRating(rate);
+        tvRating.setText(rate+"/5");
 
         // Phan code
 
@@ -95,7 +96,7 @@ public class DetailCafe extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnTroLai.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setResult(100);
@@ -103,12 +104,12 @@ public class DetailCafe extends AppCompatActivity {
             }
         });
 
-        btnXoaAnhQuanCafe.setOnClickListener(new View.OnClickListener() {
+        btnDeleteCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder b = new AlertDialog.Builder(DetailCafe.this);
-                b.setTitle("Xóa món ăn");
-                b.setMessage("Bạn có chắc là muốn xóa món ăn khỏi thực đơn không ?");
+                b.setTitle("Xóa quán cafe");
+                b.setMessage("Bạn có chắc là muốn xóa quán cafe không ?");
                 b.setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -127,7 +128,7 @@ public class DetailCafe extends AppCompatActivity {
                                 id_anh = (HashMap<String, String>) data.getValue();
                                 if (id_anh != null) {
                                     for (String key : id_anh.keySet()){
-                                        StorageReference fileCanXoa = storageReference.child("anhNhaHang")
+                                        StorageReference fileCanXoa = storageReference.child("anhQuanCafe")
                                                 .child(a.getId()).child(key+".jpg");
                                         fileCanXoa.delete();
                                     }
@@ -143,7 +144,7 @@ public class DetailCafe extends AppCompatActivity {
                                     }
                                 }
 
-                                StorageReference fileCanXoa = storageReference.child("anhQuanCafe")
+                                StorageReference fileCanXoa = storageReference.child("avatar")
                                         .child(a.getId()).child(a.getId()+".jpg");
                                 fileCanXoa.delete();
 
@@ -167,29 +168,27 @@ public class DetailCafe extends AppCompatActivity {
             }
         });
 
-
-
-        tvTenQuanCafe.setText(a.getName());
-        tvDiaChiQuanCafe.setText("Địa chỉ cửa hàng : " + a.getAddress());
+        tvName.setText(a.getName());
+        tvAddress.setText("Địa chỉ : " + a.getAddress());
         tvEmail.setText("Email : " + a.getEmail());
-        tvSoDienThoai.setText("Số điện thoại : " + a.getPhoneNumber());
-        tvGioMoCua.setText("Giờ mở cửa : " + a.getOpenTime());
-        tvMoTaQuanCafe.setText("Mô tả cửa hàng : " + a.getDescription());
-        Glide.with(DetailCafe.this).load(a.getAnhQuanCafe()).into(ivAnhQuanCafe);
+        tvPhoneNumber.setText("Số điện thoại : " + a.getPhoneNumber());
+        tvOpenTime.setText("Giờ mở cửa : " + a.getOpenTime());
+        tvDescription.setText("Mô tả : " + a.getDescription());
+        Glide.with(DetailCafe.this).load(a.getAvatar()).into(ivAvatar);
 
-        ivAnhQuanCafe.setOnClickListener(new View.OnClickListener() {
+        ivAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailCafe.this, PhongtoAnh.class);
                 Bundle data = new Bundle();
-                data.putString("anh", a.getAnhQuanCafe());
+                data.putString("anh", a.getAvatar());
                 intent.putExtras(data);
                 startActivity(intent);
             }
         });
 
 
-        btnXemAnhQuanCafe.setOnClickListener(new View.OnClickListener() {
+        btnShowImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle data = new Bundle();
@@ -200,7 +199,7 @@ public class DetailCafe extends AppCompatActivity {
             }
         });
 
-        btnXemThucDon.setOnClickListener(new View.OnClickListener() {
+        btnShowMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle data = new Bundle();
@@ -211,7 +210,7 @@ public class DetailCafe extends AppCompatActivity {
             }
         });
 
-        btnSuaQuanCafe.setOnClickListener(new View.OnClickListener() {
+        btnEditCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent suaQuanCafe = new Intent(DetailCafe.this, UpdateCafe.class);
@@ -222,18 +221,18 @@ public class DetailCafe extends AppCompatActivity {
             }
         });
 
-        GuiEmail.setOnClickListener(new View.OnClickListener() {
+        btnMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent guiemail = new Intent( DetailCafe.this, com.example.quanlychuoicuahangcaphe.Plugins.GuiEmail.class);
+                Intent sendEmail = new Intent( DetailCafe.this, com.example.quanlychuoicuahangcaphe.Plugins.SendEmail.class);
                 Bundle data= new Bundle();
                 data.putSerializable("cafe",a);
-                guiemail.putExtras(data);
-                startActivityForResult(guiemail, 105);
+                sendEmail.putExtras(data);
+                startActivityForResult(sendEmail, 105);
             }
         });
 
-        phone.setOnClickListener(new View.OnClickListener() {
+        btnPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri phoneuri = Uri.parse("tel: " +a.getPhoneNumber());
@@ -242,7 +241,7 @@ public class DetailCafe extends AppCompatActivity {
             }
         });
 
-        sms.setOnClickListener(new View.OnClickListener() {
+        btnSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri smsuri = Uri.parse("smsto: " +a.getPhoneNumber());
@@ -271,13 +270,13 @@ public class DetailCafe extends AppCompatActivity {
         if (resultCode == 104 && requestCode == 104){
             Bundle dulieu = data.getExtras();
             QuanCafe moi = (QuanCafe) dulieu.getSerializable("cafe");
-            tvTenQuanCafe.setText(moi.getName());
-            tvDiaChiQuanCafe.setText("Địa chỉ : " + moi.getAddress());
+            tvName.setText(moi.getName());
+            tvAddress.setText("Địa chỉ : " + moi.getAddress());
             tvEmail.setText("Email : " + moi.getEmail());
-            tvSoDienThoai.setText("Số điện thoại : " + moi.getPhoneNumber());
-            tvGioMoCua.setText("Giờ mở cửa : " + moi.getOpenTime());
-            tvMoTaQuanCafe.setText("Mô tả nhà hàng : " + moi.getDescription());
-            Glide.with(DetailCafe.this).load(moi.getAnhQuanCafe()).into(ivAnhQuanCafe);
+            tvPhoneNumber.setText("Số điện thoại : " + moi.getPhoneNumber());
+            tvOpenTime.setText("Giờ mở cửa : " + moi.getOpenTime());
+            tvDescription.setText("Mô tả : " + moi.getDescription());
+            Glide.with(DetailCafe.this).load(moi.getAvatar()).into(ivAvatar);
         }
     }
 }

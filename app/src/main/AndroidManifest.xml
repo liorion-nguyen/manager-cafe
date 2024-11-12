@@ -55,7 +55,7 @@
         <activity
             android:name=".Plugins.chupanh"
             android:exported="false" />
-        <activity android:name=".Plugins.GuiEmail" />
+        <activity android:name=".Plugins.SendEmail" />
         <activity
             android:name=".Plugins.MapsActivity"
             android:exported="false" />

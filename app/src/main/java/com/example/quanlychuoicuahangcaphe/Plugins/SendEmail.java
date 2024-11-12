@@ -30,7 +30,7 @@ import javax.mail.internet.MimeMessage;
 
 //    mdyv jwpn wunh vkov : mã pass app email
 
-public class GuiEmail extends AppCompatActivity {
+public class SendEmail extends AppCompatActivity {
     TextView edtEmailTo,TenNH;
     EditText edtContent,edtSubject;
     Button btnSend,btnTroLai;
@@ -38,7 +38,7 @@ public class GuiEmail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gui_email);
+        setContentView(R.layout.activity_send_email);
 
         isConnected();
         // Lay itent
@@ -69,8 +69,8 @@ public class GuiEmail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    String fromEmail = "plvanhieu@gmail.com";
-                    String emailPassword = "mdyv jwpn wunh vkov";
+                    String fromEmail = "stu715105031@hnue.edu.vn";
+                    String emailPassword = "Chugg203";
                     String toEmail = edtEmailTo.getText().toString().trim();
                     String subject = edtSubject.getText().toString().trim();
                     String content = edtContent.getText().toString().trim();
@@ -101,7 +101,7 @@ public class GuiEmail extends AppCompatActivity {
                             }catch (Exception e)
                             {
                                 Log.d("Lỗi Thread Email",e.toString());
-                                Toast.makeText(GuiEmail.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SendEmail.this, e.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -111,10 +111,10 @@ public class GuiEmail extends AppCompatActivity {
                     edtEmailTo.setText("");
                     edtSubject.setText("");
 
-                    Toast.makeText(GuiEmail.this, "Email đã được gửi tới"+toEmail, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SendEmail.this, "Email đã được gửi tới"+toEmail, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Log.d("Lỗi gửi Email",e.toString());
-                    Toast.makeText(GuiEmail.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SendEmail.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -131,7 +131,7 @@ public class GuiEmail extends AppCompatActivity {
                         new ConnectivityManager.NetworkCallback() {
                             @Override
                             public void onLost(Network network) {
-                                Intent intent = new Intent(GuiEmail.this, CheckInternet.class);
+                                Intent intent = new Intent(SendEmail.this, CheckInternet.class);
                                 startActivity(intent);
                             }
                         }

@@ -10,6 +10,7 @@ public class QuanCafe implements Serializable {
     public String phoneNumber; 
     public String email; 
     public String description; 
+    public String avatar;
     public String openTime; 
     public ArrayList<String> listHinhAnh; 
     public ArrayList<monAn> listMonAn; 
@@ -18,13 +19,14 @@ public class QuanCafe implements Serializable {
     public QuanCafe() {}
 
     public QuanCafe(String id, String name, String address, String phoneNumber, String email,
-                    String description, String openTime, ArrayList<String> listHinhAnh, ArrayList<monAn> listMonAn, Float tb) {
+                    String description, String avatar, String openTime, ArrayList<String> listHinhAnh, ArrayList<monAn> listMonAn, Float tb) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.description = description;
+        this.avatar = avatar;
         this.openTime = openTime;
         this.listHinhAnh = listHinhAnh;
         this.listMonAn = listMonAn;
@@ -38,6 +40,14 @@ public class QuanCafe implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getName() {

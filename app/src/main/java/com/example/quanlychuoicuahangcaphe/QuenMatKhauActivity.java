@@ -1,5 +1,6 @@
 package com.example.quanlychuoicuahangcaphe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -7,14 +8,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.quanlychuoicuahangcaphe.Plugins.GuiEmail;
+import com.example.quanlychuoicuahangcaphe.Model.User;
+import com.example.quanlychuoicuahangcaphe.Plugins.SendEmail;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -28,6 +37,10 @@ import javax.mail.internet.MimeMessage;
 public class QuenMatKhauActivity extends AppCompatActivity {
     EditText edtEmail;
     Button btnQuenMatKhau, btnHuy;
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,16 +57,52 @@ public class QuenMatKhauActivity extends AppCompatActivity {
 
     private void addEvents() {
         btnQuenMatKhau.setOnClickListener(v -> {
-            AlertDialog alertDialog = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
-            alertDialog.setTitle("Thông báo");
-            alertDialog.setMessage("Bạn có chắc chắn muốn gửi mật khẩu mới không?");
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Có", (dialog, which) -> {
-                sendMatKhauMoi();
+            String email = edtEmail.getText().toString().trim();
+            myRef.getRef().get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(!task.isSuccessful()) {
+                        Log.e("firebase", "Error getting data", task.getException());
+                    }
+                    else {
+                        boolean check = true;
+                        String id = "";
+                        Map<String, User> userList = (Map<String, User>) task.getResult().getValue();
+                        for(Map.Entry<String, User> entry : userList.entrySet()) {
+                            id = entry.getKey();
+                            Map<String, String> u = (Map<String, String>) entry.getValue();
+                            if(u.get("email").equals(email)) {
+                                check = false;
+                                break;
+                            }
+                        }
+                        if(!check) {
+                            AlertDialog alertDialog = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
+                            alertDialog.setTitle("Thông báo");
+                            alertDialog.setMessage("Bạn có chắc chắn muốn gửi mật khẩu mới không?");
+                            String finalId = id;
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Có", (dialog, which) -> {
+                                String newPassword = sendMatKhauMoi();
+                                if(!newPassword.equals("")) {
+                                    myRef.child(finalId).child("password").setValue(newPassword);
+                                }
+                            });
+                            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Không", (dialog, which) -> {
+                                dialog.dismiss();
+                            });
+                            alertDialog.show();
+                        } else {
+                            AlertDialog alertDialog = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
+                            alertDialog.setTitle("Thông báo");
+                            alertDialog.setMessage("Email không tồn tại!");
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
+                                dialog.dismiss();
+                            });
+                            alertDialog.show();
+                        }
+                    }
+                }
             });
-            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Không", (dialog, which) -> {
-                dialog.dismiss();
-            });
-            alertDialog.show();
         });
 
         btnHuy.setOnClickListener(v -> {
@@ -62,8 +111,9 @@ public class QuenMatKhauActivity extends AppCompatActivity {
 
     }
 
-    public void sendMatKhauMoi() {
+    public String sendMatKhauMoi() {
         String toEmail = edtEmail.getText().toString().trim();
+        String newPassword = "";
         if(toEmail.equals("")) {
             AlertDialog alertDialog = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
             alertDialog.setTitle("Thông báo");
@@ -82,8 +132,10 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                 String tmp_char = "abcdefghijklmnopqrstuvwxyz0123456789";
                 for (int i = 0; i < 8; i++) {
                     int index = (int) (Math.random() * tmp_char.length());
-                    content += tmp_char.charAt(index);
+                    newPassword += tmp_char.charAt(index);
                 }
+
+                content += newPassword;
 
                 String host = "smtp.gmail.com";
                 Properties properties = System.getProperties();
@@ -117,14 +169,14 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                 });
                 emailThread.start();
 
-                AlertDialog alertDialog_GuiEmail = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
-                alertDialog_GuiEmail.setTitle("Thông báo");
-                alertDialog_GuiEmail.setMessage("Email đã được gửi tới " + toEmail);
-                alertDialog_GuiEmail.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
+                AlertDialog alertDialog_SendEmail = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
+                alertDialog_SendEmail.setTitle("Thông báo");
+                alertDialog_SendEmail.setMessage("Email đã được gửi tới " + toEmail);
+                alertDialog_SendEmail.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
                     dialog.dismiss();
                     finish();
                 });
-                alertDialog_GuiEmail.show();
+                alertDialog_SendEmail.show();
                 //clear noi dung
                 edtEmail.setText("");
 
@@ -135,5 +187,6 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                 Toast.makeText(QuenMatKhauActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
             }
         }
+        return newPassword;
     }
 }

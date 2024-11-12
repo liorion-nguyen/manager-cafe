@@ -46,22 +46,22 @@ public class QuanCafeAdapter extends ArrayAdapter implements Filterable {
         LayoutInflater layoutInflater = context.getLayoutInflater();
         View customView = layoutInflater.inflate(resource, null);
 
-        ImageView ivAnhNhaHang = customView.findViewById(R.id.ivAnhNhaHang);
-        TextView tvTenNhaHang = customView.findViewById(R.id.tvTenNhaHang);
-        TextView tvSoDienThoai = customView.findViewById(R.id.tvSoDienThoai);
-        TextView tvGioMoCua = customView.findViewById(R.id.tvGioMoCua);
-        TextView tvDiaChi = customView.findViewById(R.id.tvDiaChi);
+        ImageView ivAvatar = customView.findViewById(R.id.ivAvatar);
+        TextView tvName = customView.findViewById(R.id.tvName);
+        TextView tvPhoneNumber = customView.findViewById(R.id.tvPhoneNumber);
+        TextView tvOpenTime = customView.findViewById(R.id.tvOpenTime);
+        TextView tvAddress = customView.findViewById(R.id.tvAddress);
 
         QuanCafe quanCafe = listQuanCafe.get(position);
 
-        tvTenNhaHang.setText(quanCafe.getName());
-        tvSoDienThoai.setText("Số điện thoại : " + quanCafe.getPhoneNumber());
-        tvGioMoCua.setText(quanCafe.getOpenTime());
-        tvDiaChi.setText(quanCafe.getAddress());
+        tvName.setText(quanCafe.getName());
+        tvPhoneNumber.setText("Số điện thoại : " + quanCafe.getPhoneNumber());
+        tvOpenTime.setText(quanCafe.getOpenTime());
+        tvAddress.setText(quanCafe.getAddress());
 
-        if (quanCafe.getAnhQuanCafe() != null){
-            if (quanCafe.getAnhQuanCafe().length() >0){
-                Glide.with(context.getBaseContext()).load(quanCafe.getAnhQuanCafe()).into(ivAnhNhaHang);
+        if (quanCafe.getAvatar() != null){
+            if (quanCafe.getAvatar().length() >0){
+                Glide.with(context.getBaseContext()).load(quanCafe.getAvatar()).into(ivAvatar);
             }
         }
 
