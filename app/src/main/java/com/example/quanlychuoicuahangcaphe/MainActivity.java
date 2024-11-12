@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         Intent data = result.getData();
-                        Boolean status = data.getBooleanExtra("status", false);
+//                        Boolean status = data.getBooleanExtra("status", false);
 //                        String HoVaTen = data.getStringExtra("HoVaTen");
 //                        String Email = data.getStringExtra("Email");
 
