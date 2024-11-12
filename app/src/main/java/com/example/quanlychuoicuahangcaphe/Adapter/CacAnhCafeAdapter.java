@@ -38,7 +38,7 @@ public class CacAnhCafeAdapter extends ArrayAdapter {
         LayoutInflater layoutInflater = context.getLayoutInflater();
         View customView = layoutInflater.inflate(resourse,null);
 
-        ImageView ivAnhQuanCafe = customView.findViewById(R.id.ivAnhQuanCafe);
+        ImageView ivAnhQuanCafe = customView.findViewById(R.id.ivAvatar);
         String src = listCacHinhAnhQuanCafe.get(position);
         Glide.with(context.getBaseContext()).load(src).into(ivAnhQuanCafe);
 

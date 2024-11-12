@@ -148,14 +148,15 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/baseline_visibility_24"/>
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/btnDangKy"
                     android:layout_width="600px"
                     android:layout_height="100px"
-                    android:text="Dăng Ký"
                     android:layout_marginBottom="50px"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_login"/>
+                    android:background="@drawable/button_login"
+                    android:text="Đăng Ký"
+                    android:textColor="@color/white" />
                 <Button
                     android:id="@+id/btnHuy"
                     android:layout_width="600px"

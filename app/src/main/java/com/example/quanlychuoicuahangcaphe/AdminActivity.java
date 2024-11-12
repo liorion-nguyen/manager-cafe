@@ -31,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 public class AdminActivity extends AppCompatActivity {
     FloatingActionButton fabThemQuanCafe;
     ListView lvQuanCafe;
@@ -40,7 +39,6 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     DatabaseReference quanCafe = databaseReference.child("cafe");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,27 +49,26 @@ public class AdminActivity extends AppCompatActivity {
         fabThemQuanCafe = findViewById(R.id.fabThemNhaHang);
         lvQuanCafe = findViewById(R.id.lvNhaHang);
         listQuanCafe = new ArrayList<>();
-        quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this,R.layout.lv_item_nha_hang,listQuanCafe);
+        quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this, R.layout.lv_item_nha_hang, listQuanCafe);
         lvQuanCafe.setAdapter(quanCafeAdapter);
 
         fabThemQuanCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent themMoiQuanCafe = new Intent(AdminActivity.this, AddACafeActivity.class);
-                startActivity(themMoiQuanCafe);
+                Intent addACafe = new Intent(AdminActivity.this, AddACafeActivity.class);
+                startActivity(addACafe);
             }
         });
         isConnected();
         docDuLieu();
     }
 
-    //tao menu
-
+    // tao menu
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater =  getMenuInflater();
-        menuInflater.inflate(R.menu.search_menu,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.search_menu, menu);
         MenuItem searchBar = menu.findItem(R.id.searchBar);
         SearchView searchView = (SearchView) searchBar.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -81,6 +78,7 @@ public class AdminActivity extends AppCompatActivity {
                 quanCafeAdapter.getFilter().filter(query);
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 quanCafeAdapter.getFilter().filter(newText);
@@ -93,22 +91,20 @@ public class AdminActivity extends AppCompatActivity {
 
     // kiểm tra kết nối mạng
     void isConnected() {
-        ConnectivityManager cm
-                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
 
-        cm.registerNetworkCallback
-                (
-                        builder.build(),
-                        new ConnectivityManager.NetworkCallback() {
-                            @Override
-                            public void onLost(Network network) {
-                                Intent intent = new Intent(AdminActivity.this, CheckInternet.class);
-                                startActivity(intent);
-                            }
-                        }
+        cm.registerNetworkCallback(
+                builder.build(),
+                new ConnectivityManager.NetworkCallback() {
+                    @Override
+                    public void onLost(Network network) {
+                        Intent intent = new Intent(AdminActivity.this, CheckInternet.class);
+                        startActivity(intent);
+                    }
+                }
 
-                );
+        );
     }
 
     // Bắt kết quả của các activity
@@ -119,43 +115,44 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     // Đọc dữ liệu từ FireBase rồi lưu vào list nhà hàng
-    private void docDuLieu(){
+    private void docDuLieu() {
         quanCafe.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listQuanCafe.clear();
-                for (DataSnapshot data: snapshot.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
                     QuanCafe nh = data.getValue(QuanCafe.class);
                     DataSnapshot data4 = data.child("danhGia");
-                    float sumda=0;
-                    float arrda=0;
+                    float sumda = 0;
+                    float arrda = 0;
 
                     for (DataSnapshot a : data4.getChildren()) {
-                        sumda+=Float.parseFloat(a.getValue().toString());
+                        sumda += Float.parseFloat(a.getValue().toString());
                     }
                     if (data4.getChildrenCount() == 0) {
                         arrda = 0;
-                    } else arrda = sumda / data4.getChildrenCount();
+                    } else
+                        arrda = sumda / data4.getChildrenCount();
                     nh.setTb(arrda);
 
                     ArrayList<monAn> listMonAn = new ArrayList<>();
                     DataSnapshot data1 = data.child("thucDon");
 
-                    for (DataSnapshot data2: data1.getChildren()){
+                    for (DataSnapshot data2 : data1.getChildren()) {
                         monAn ma = data2.getValue(monAn.class);
-                        if (ma != null){
+                        if (ma != null) {
                             listMonAn.add(ma);
                         }
                     }
-                    DataSnapshot dataCacAnhQuanCafe = data.child("cacAnhQuanCafe");
+                    DataSnapshot dataCacAnhQuanCafe = data.child("listImages");
                     ArrayList<String> hinhanhs = new ArrayList<>();
-                    for (DataSnapshot data3 : dataCacAnhQuanCafe.getChildren()){
+                    for (DataSnapshot data3 : dataCacAnhQuanCafe.getChildren()) {
                         hinhanhs.add(data3.getValue().toString());
                     }
 
                     nh.setListHinhAnh(hinhanhs);
                     nh.setListMonAn(listMonAn);
-                    if (nh != null){
+                    if (nh != null) {
                         listQuanCafe.add(nh);
                     }
                 }

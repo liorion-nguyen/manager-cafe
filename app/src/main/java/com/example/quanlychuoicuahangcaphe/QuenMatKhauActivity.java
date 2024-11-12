@@ -16,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quanlychuoicuahangcaphe.Model.User;
-import com.example.quanlychuoicuahangcaphe.Plugins.GuiEmail;
+import com.example.quanlychuoicuahangcaphe.Plugins.SendEmail;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -169,14 +169,14 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                 });
                 emailThread.start();
 
-                AlertDialog alertDialog_GuiEmail = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
-                alertDialog_GuiEmail.setTitle("Thông báo");
-                alertDialog_GuiEmail.setMessage("Email đã được gửi tới " + toEmail);
-                alertDialog_GuiEmail.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
+                AlertDialog alertDialog_SendEmail = new AlertDialog.Builder(QuenMatKhauActivity.this).create();
+                alertDialog_SendEmail.setTitle("Thông báo");
+                alertDialog_SendEmail.setMessage("Email đã được gửi tới " + toEmail);
+                alertDialog_SendEmail.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (dialog, which) -> {
                     dialog.dismiss();
                     finish();
                 });
-                alertDialog_GuiEmail.show();
+                alertDialog_SendEmail.show();
                 //clear noi dung
                 edtEmail.setText("");
 

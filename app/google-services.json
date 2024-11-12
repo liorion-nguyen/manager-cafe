@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "816912486913",
-    "firebase_url": "https://managercaf-38cef-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "managercaf-38cef",
-    "storage_bucket": "managercaf-38cef.firebasestorage.app"
+    "project_number": "124556711513",
+    "firebase_url": "https://school-management-9be49-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "school-management-9be49",
+    "storage_bucket": "school-management-9be49.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:816912486913:android:5320f14f4e49c5af03a600",
+        "mobilesdk_app_id": "1:124556711513:android:35e1f00934c2c0f3fb4348",
         "android_client_info": {
           "package_name": "com.example.quanlychuoicuahangcaphe"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDbF5KgSbFFfhKcgIWbufyexB0yEVlWmtE"
+          "current_key": "AIzaSyABU8GojdVxRnYAdwERuTvXE1Y_X_LV36g"
         }
       ],
       "services": {
