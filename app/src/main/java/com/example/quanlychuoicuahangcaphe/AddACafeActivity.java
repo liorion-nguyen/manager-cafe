@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkRequest;
@@ -29,6 +31,7 @@ import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
 import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -40,8 +43,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class AddACafeActivity extends AppCompatActivity {
     ImageView imgAnhCafe;
@@ -59,7 +65,7 @@ public class AddACafeActivity extends AppCompatActivity {
         String id = cafeRef.push().getKey();
         setContentView(R.layout.activity_add_cafe);
         newCafe.setId(id);
-        System.out.println(id);
+        System.out.println(newCafe.getListHinhAnh());
 
         isConnected();
         imgAnhCafe = findViewById(R.id.imgAnhCafe);
@@ -126,7 +132,7 @@ public class AddACafeActivity extends AppCompatActivity {
                         HashMap<String, String> id_anh = (HashMap<String, String>) data.getValue();
                         if (id_anh != null) {
                             for (String key : id_anh.keySet()) {
-                                StorageReference fileCanXoa = storageReference.child("anhDaiDien")
+                                StorageReference fileCanXoa = storageReference.child("avatar")
                                         .child(id).child(key + ".jpg");
                                 fileCanXoa.delete();
                             }
@@ -142,7 +148,7 @@ public class AddACafeActivity extends AppCompatActivity {
                             }
                         }
 
-                        StorageReference fileCanXoa = storageReference.child("anhDaiDien")
+                        StorageReference fileCanXoa = storageReference.child("avatar")
                                 .child(id + ".jpg");
                         fileCanXoa.delete();
                     }
@@ -159,12 +165,14 @@ public class AddACafeActivity extends AppCompatActivity {
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<String> listHinhAnh = newCafe.getListHinhAnh(); // Lấy danh sách hình ảnh
                 String gioHoatDong = "";
                 int gioMoCua = tpGioMoCua.getHour();
                 int phutMoCua = tpGioMoCua.getMinute();
                 int gioDongCua = tpGioDongCua.getHour();
                 int phutDongCua = tpGioDongCua.getMinute();
 
+                // Format opening hours
                 if (gioMoCua < 10) {
                     gioHoatDong += "0" + gioMoCua + ":";
                 } else {
@@ -189,45 +197,68 @@ public class AddACafeActivity extends AppCompatActivity {
                     gioHoatDong += phutDongCua;
                 }
 
+                // Get cafe details
                 String tenCafe = edtTenCafe.getText().toString().trim();
                 String diaChiCafe = edtDiaChiCafe.getText().toString().trim();
                 String soDienThoaiCafe = edtSoDienThoaiCafe.getText().toString().trim();
                 String emailCafe = edtEmailCafe.getText().toString().trim();
                 String moTaCafe = edtMoTaCafe.getText().toString().trim();
 
-                if (tenCafe.length() > 0 && diaChiCafe.length() > 0 && soDienThoaiCafe.length() > 0
-                        && emailCafe.length() > 0) {
+                // Check if all fields are filled
+                if (tenCafe.length() > 0 && diaChiCafe.length() > 0 && soDienThoaiCafe.length() > 0 && emailCafe.length() > 0) {
+                    // Set cafe data
+                    newCafe.setOpenTime(gioHoatDong);
+                    newCafe.setName(tenCafe);
+                    newCafe.setAddress(diaChiCafe);
+                    newCafe.setPhoneNumber(soDienThoaiCafe);
+                    newCafe.setEmail(emailCafe);
+                    newCafe.setDescription(moTaCafe);
 
-                    Map<String, String> newCafe = new HashMap<>();
-                    newCafe.put("openTime", gioHoatDong);
-                    newCafe.put("name", tenCafe);
-                    newCafe.put("address", diaChiCafe);
-                    newCafe.put("phoneNumber", soDienThoaiCafe);
-                    newCafe.put("email", emailCafe);
-                    newCafe.put("description", moTaCafe);
-                    newCafe.put("id", id);
-                    System.out.println(newCafe);
+                    // Update Firebase database
+                    cafeRef.child(id).child("address").setValue(diaChiCafe);
+                    cafeRef.child(id).child("email").setValue(emailCafe);
+                    cafeRef.child(id).child("openTime").setValue(gioHoatDong);
+                    cafeRef.child(id).child("id").setValue(id);
+                    cafeRef.child(id).child("description").setValue(moTaCafe);
+                    cafeRef.child(id).child("phoneNumber").setValue(soDienThoaiCafe);
+                    cafeRef.child(id).child("name").setValue(tenCafe);
+                    cafeRef.child(id).child("listImages").setValue(listHinhAnh); // Thêm danh sách hình ảnh
 
-                    cafeRef.child(id).setValue(newCafe).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    // Upload avatar image
+                    StorageReference avatar = storageReference.child("avatar").child(id).child(id + ".jpg");
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnhCafe.getDrawable();
+                    Bitmap bitmap = bitmapDrawable.getBitmap();
+                    ByteArrayOutputStream baoStream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baoStream);
+                    byte[] imgData = baoStream.toByteArray();
+                    avatar.putBytes(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(AddACafeActivity.this, "Thêm quán café thành công!", Toast.LENGTH_SHORT)
-                                        .show();
-                            } else {
-                                Log.e("FirebaseError", "Lỗi ghi địa chỉ", task.getException());
-                            }
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            avatar.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String linkAnhCafe = uri.toString();
+                                    cafeRef.child(id).child("avatar").setValue(linkAnhCafe).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(AddACafeActivity.this, "Thêm quán café thành công!", Toast.LENGTH_SHORT).show();
+                                                finish();
+                                            } else {
+                                                Toast.makeText(AddACafeActivity.this, "Thêm quán café thất bại, lỗi: " + task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            });
                         }
                     });
-                    Intent intent = new Intent(AddACafeActivity.this, AdminActivity.class);
-                    startActivity(intent);
-                    finish();
                 } else {
                     Toast.makeText(AddACafeActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
+        
         // Nút thêm các ảnh cho quán café.
         btnCacHinhAnhCafe.setOnClickListener(new View.OnClickListener() {
             @Override

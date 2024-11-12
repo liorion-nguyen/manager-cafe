@@ -39,13 +39,13 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 
 public class UpdateCafe extends AppCompatActivity {
-    ImageView ivAnhQuanCafe;
+    ImageView ivAvatar;
     Button btnChonAnh,btnHuyBo, btnXacNhan,btnChupanh;
-    EditText edtTenQuanCafe, edtSoDienThoai, edtEmail, edtMoTaQuanCafe, edtDiaChiQuanCafe;
-    TimePicker tpGioMoCua, tpGioDongCua;
+    EditText edtName, edtPhoneNumber, edtEmail, edtDescription, edtAddress;
+    TimePicker tpOpenTime, tpCloseTime;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    DatabaseReference quanCafe = databaseReference.child("quanCafe");
+    DatabaseReference quanCafe = databaseReference.child("cafe");
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
     @Override
@@ -55,17 +55,17 @@ public class UpdateCafe extends AppCompatActivity {
 
         isConnected();
         // Ánh xạ
-        ivAnhQuanCafe = findViewById(R.id.ivAnhQuanCafe);
+        ivAvatar = findViewById(R.id.ivAvatar);
         btnChonAnh = findViewById(R.id.btnChonAnh);
         btnHuyBo = findViewById(R.id.btnHuyBo);
         btnXacNhan = findViewById(R.id.btnXacNhan);
-        edtTenQuanCafe = findViewById(R.id.edtTenQuanCafe);
-        edtSoDienThoai = findViewById(R.id.edtSoDienThoai);
+        edtName = findViewById(R.id.edtName);
+        edtPhoneNumber = findViewById(R.id.edtPhoneNumber);
         edtEmail = findViewById(R.id.edtEmail);
-        edtMoTaQuanCafe = findViewById(R.id.edtMoTaQuanCafe);
-        edtDiaChiQuanCafe = findViewById(R.id.edtDiaChiQuanCafe);
-        tpGioDongCua = findViewById(R.id.tpGioDongCua);
-        tpGioMoCua = findViewById(R.id.tpGioMoCua);
+        edtDescription = findViewById(R.id.edtDescription);
+        edtAddress = findViewById(R.id.edtAddress);
+        tpCloseTime = findViewById(R.id.tpCloseTime);
+        tpOpenTime = findViewById(R.id.tpOpenTime);
         btnChupanh = findViewById(R.id.btnChupanh);
 
         // Lay itent
@@ -74,21 +74,21 @@ public class UpdateCafe extends AppCompatActivity {
         QuanCafe a = (QuanCafe) data.getSerializable("cafe");
 
         // Truyen du lieu
-        Glide.with(UpdateCafe.this).load(a.getAnhQuanCafe()).into(ivAnhQuanCafe);
-        edtTenQuanCafe.setText(a.getName());
-        edtDiaChiQuanCafe.setText(a.getAddress());
+        Glide.with(UpdateCafe.this).load(a.getAvatar()).into(ivAvatar);
+        edtName.setText(a.getName());
+        edtAddress.setText(a.getAddress());
         edtEmail.setText(a.getEmail());
-        edtSoDienThoai.setText(a.getPhoneNumber());
-        edtMoTaQuanCafe.setText(a.getDescription());
+        edtPhoneNumber.setText(a.getPhoneNumber());
+        edtDescription.setText(a.getDescription());
         int gioMoCua,phutMoCua,gioDongCua,phutDongCua;
         gioMoCua = Integer.parseInt(a.getOpenTime().substring(0,2));
         phutMoCua = Integer.parseInt(a.getOpenTime().substring(3,5));
         gioDongCua = Integer.parseInt(a.getOpenTime().substring(8,10));
         phutDongCua = Integer.parseInt(a.getOpenTime().substring(11,13));
-        tpGioMoCua.setHour(gioMoCua);
-        tpGioMoCua.setMinute(phutMoCua);
-        tpGioDongCua.setHour(gioDongCua);
-        tpGioDongCua.setMinute(phutDongCua);
+        tpOpenTime.setHour(gioMoCua);
+        tpOpenTime.setMinute(phutMoCua);
+        tpCloseTime.setHour(gioDongCua);
+        tpCloseTime.setMinute(phutDongCua);
 
 
         // Phần code
@@ -110,7 +110,7 @@ public class UpdateCafe extends AppCompatActivity {
                             Intent intent = o.getData();
                             Bundle data = intent.getExtras();
                             String photo = data.getString("anh");
-                            Glide.with(UpdateCafe.this).load(photo).into(ivAnhQuanCafe);
+                            Glide.with(UpdateCafe.this).load(photo).into(ivAvatar);
 
 //                            Bitmap bitmap = BitmapFactory.decodeFile(photo);
 //                            ivChonAnh.setImageBitmap(bitmap);
@@ -132,7 +132,7 @@ public class UpdateCafe extends AppCompatActivity {
                 new ActivityResultCallback<Uri>() {
                     @Override
                     public void onActivityResult(Uri o) {
-                        ivAnhQuanCafe.setImageURI(o);
+                        ivAvatar.setImageURI(o);
                     }
                 }
         );
@@ -149,84 +149,84 @@ public class UpdateCafe extends AppCompatActivity {
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tenQuanCafe = edtTenQuanCafe.getText().toString();
-                String diaChiQuanCafe = edtDiaChiQuanCafe.getText().toString();
+                String name = edtName.getText().toString();
+                String address = edtAddress.getText().toString();
                 String email = edtEmail.getText().toString();
-                String soDienThoai = edtSoDienThoai.getText().toString();
-                String moTaQuanCafe = edtMoTaQuanCafe.getText().toString();
-                String gioHoatDong = "";
-                int gioMoCua = tpGioMoCua.getHour();
-                int phutMoCua = tpGioMoCua.getMinute();
-                int gioDongCua = tpGioDongCua.getHour();
-                int phutDongCua = tpGioDongCua.getMinute();
+                String phoneNumber = edtPhoneNumber.getText().toString();
+                String description = edtDescription.getText().toString();
+                String openTime = "";
+                int gioMoCua = tpOpenTime.getHour();
+                int phutMoCua = tpOpenTime.getMinute();
+                int gioDongCua = tpCloseTime.getHour();
+                int phutDongCua = tpCloseTime.getMinute();
 
                 if (gioMoCua < 10){
-                    gioHoatDong += "0"+gioMoCua+":";
+                    openTime += "0"+gioMoCua+":";
                 } else {
-                    gioHoatDong += gioMoCua+":";
+                    openTime += gioMoCua+":";
                 }
 
                 if (phutMoCua < 10){
-                    gioHoatDong += "0"+phutMoCua + " - ";
+                    openTime += "0"+phutMoCua + " - ";
                 } else {
-                    gioHoatDong += phutMoCua + " - ";
+                    openTime += phutMoCua + " - ";
                 }
 
                 if (gioDongCua < 10){
-                    gioHoatDong += "0" + gioDongCua + ":";
+                    openTime += "0" + gioDongCua + ":";
                 } else {
-                    gioHoatDong += gioDongCua + ":";
+                    openTime += gioDongCua + ":";
                 }
 
                 if (phutDongCua < 10){
-                    gioHoatDong += "0" + phutDongCua;
+                    openTime += "0" + phutDongCua;
                 } else {
-                    gioHoatDong += phutDongCua;
+                    openTime += phutDongCua;
                 }
 
-                if (tenQuanCafe.length() > 0 && diaChiQuanCafe.length() > 0 && email.length() > 0 && soDienThoai.length() > 0 && moTaQuanCafe.length() > 0){
+                if (name.length() > 0 && address.length() > 0 && email.length() > 0 && phoneNumber.length() > 0 && description.length() > 0){
                     QuanCafe moi = a;
-                    moi.setDescription(moTaQuanCafe);
-                    moi.setAddress(diaChiQuanCafe);
+                    moi.setDescription(description);
+                    moi.setAddress(address);
                     moi.setEmail(email);
-                    moi.setOpenTime(gioHoatDong);
-                    moi.setName(tenQuanCafe);
-                    moi.setPhoneNumber(soDienThoai);
+                    moi.setOpenTime(openTime);
+                    moi.setName(name);
+                    moi.setPhoneNumber(phoneNumber);
 
 
                     // Đoạn sửa giá trị tên + email + giờ mở cửa + mô tả + email + số điện thoại
-                    quanCafe.child(a.getId()).child("address").setValue(diaChiQuanCafe);
+                    quanCafe.child(a.getId()).child("address").setValue(address);
                     quanCafe.child(a.getId()).child("email").setValue(email);
-                    quanCafe.child(a.getId()).child("openTime").setValue(gioHoatDong);
-                    quanCafe.child(a.getId()).child("description").setValue(moTaQuanCafe);
-                    quanCafe.child(a.getId()).child("name").setValue(tenQuanCafe);
-                    quanCafe.child(a.getId()).child("phoneNumber").setValue(soDienThoai);
+                    quanCafe.child(a.getId()).child("openTime").setValue(openTime);
+                    quanCafe.child(a.getId()).child("description").setValue(description);
+                    quanCafe.child(a.getId()).child("name").setValue(name);
+                    quanCafe.child(a.getId()).child("phoneNumber").setValue(phoneNumber);
 
                     // Đoạn thêm ảnh vào storage + get link download nếu đã đổi ảnh / sửa ảnh
-                    StorageReference anhDaiDien  =
-                            storageReference.child("anhDaiDien").child(a.getId()).child( a.getId().toString() + ".jpg");
+                    StorageReference avatar  =
+                            storageReference.child("avatar").child(a.getId()).child( a.getId().toString() + ".jpg");
 
-                    BitmapDrawable bitmapDrawable = (BitmapDrawable) ivAnhQuanCafe.getDrawable();
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) ivAvatar.getDrawable();
                     Bitmap bitmap = bitmapDrawable.getBitmap();
                     ByteArrayOutputStream baoStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baoStream);
                     byte[] imgData = baoStream.toByteArray();
-                    anhDaiDien.putBytes(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    avatar.putBytes(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            anhDaiDien.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            avatar.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String linkHinhAnh = uri.toString();
                                     moi.setAnhQuanCafe(linkHinhAnh);
                                     // Set value cho mon an
                                     quanCafe.child(a.getId().toString())
-                                            .child("anhQuanCafe").setValue(linkHinhAnh).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            .child("avatar").setValue(linkHinhAnh).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
                                                         Toast.makeText(UpdateCafe.this,
-                                                                "Sửa nhà hàng thành công", Toast.LENGTH_SHORT).show();
+                                                                "Sửa quán cà phê thành công", Toast.LENGTH_SHORT).show();
                                                         Intent intent1 = new Intent();
                                                         Bundle data = new Bundle();
                                                         data.putSerializable("quanCafe",moi);
@@ -235,7 +235,7 @@ public class UpdateCafe extends AppCompatActivity {
                                                         finish();
                                                     } else {
                                                         Toast.makeText(UpdateCafe.this,
-                                                                "Sửa nhà hàng thất bại, lỗi : " + task.getException().toString(),
+                                                                "Sửa quán cà phê thất bại, lỗi : " + task.getException().toString(),
                                                                 Toast.LENGTH_SHORT).show();
                                                         finish();
                                                     }
