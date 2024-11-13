@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+        android:background="#F8F4E1">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -36,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:text="Tên món ăn"
                 android:textSize="20sp"
-                android:textColor="#009688"
+                android:textColor="#30D3C4"
                 android:textStyle="bold|italic"
                 android:layout_weight="1"/>
             <TextView

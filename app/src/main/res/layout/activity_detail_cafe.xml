@@ -21,24 +21,26 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/imgBtnTroLai"
-                android:layout_width="45dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="#F8F4E1"
-                android:src="@drawable/baseline_arrow_back_24" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chi tiết quán cafe"
+                android:text="CHI TIẾT QUÁN CAFE"
                 android:textAlignment="center"
                 android:textSize="16pt"
-                android:textStyle="bold|italic"
-                android:textColorHint="#69472E"
-                android:textColor="#69472E"/>
+                android:textStyle="bold|"
+                android:textColorHint="#F8F4E1"
+                android:textColor="#F8F4E1"
+                android:background="@drawable/rounded_bottom_background"/>
+
+            <ImageButton
+                android:id="@+id/imgBtnTroLai"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:src="@drawable/baseline_arrow_back_24" />
 
             <TextView
                 android:id="@+id/tvName"
@@ -52,20 +54,92 @@
                 android:textColorHint="#69472E"
                 android:textColor="#69472E"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                card_view:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/ivAvatar"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:background="@drawable/background_4_btn">
+
+                        <ImageButton
+                            android:id="@+id/btnMail"
+                            android:layout_width="25pt"
+                            android:layout_height="25pt"
+                            android:background="@drawable/gmail"
+                            android:backgroundTint="#69472E" />
+
+                        <ImageButton
+                            android:id="@+id/btnShowMap"
+                            android:layout_width="25pt"
+                            android:layout_height="25pt"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/map"
+                            android:backgroundTint="#69472E" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/nhahang" />
-            </androidx.cardview.widget.CardView>
+                    card_view:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/nhahang" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:background="@drawable/background_4_btn">
+
+                        <ImageButton
+                            android:id="@+id/btnSms"
+                            android:layout_width="25pt"
+                            android:layout_height="25pt"
+                            android:background="@drawable/message"
+                            android:backgroundTint="#69472E" />
+
+                        <ImageButton
+                            android:id="@+id/btnPhone"
+                            android:layout_width="25pt"
+                            android:layout_height="25pt"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/telephone"
+                            android:backgroundTint="#69472E" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
 
 
             <LinearLayout
@@ -168,7 +242,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
                 <Button
                     android:id="@+id/btnShowImage"
@@ -202,33 +277,6 @@
                 android:layout_marginBottom="8dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btnPhone"
-                    android:layout_width="25pt"
-                    android:layout_height="25pt"
-                    android:layout_marginRight="10pt"
-                    android:background="@drawable/phone" />
-
-                <ImageButton
-                    android:id="@+id/btnSms"
-                    android:layout_width="25pt"
-                    android:layout_height="25pt"
-                    android:layout_marginRight="10pt"
-                    android:background="@drawable/sms" />
-
-                <ImageButton
-                    android:id="@+id/btnMail"
-                    android:layout_width="25pt"
-                    android:layout_height="25pt"
-                    android:layout_marginRight="10pt"
-                    android:background="@drawable/gmail" />
-
-                <ImageButton
-                    android:id="@+id/btnShowMap"
-                    android:layout_width="25pt"
-                    android:layout_height="25pt"
-                    android:background="@drawable/map" />
 
             </LinearLayout>
 

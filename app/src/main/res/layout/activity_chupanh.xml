@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="#F8F4E1">
         <ImageView
             android:id="@+id/imgData"
             android:src="@drawable/nhahang"
@@ -32,7 +33,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#69472E"
                 android:textSize="20sp"
                 android:padding="10dp"
 
@@ -45,7 +46,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#69472E"
                 android:textSize="20sp"
 
                 />

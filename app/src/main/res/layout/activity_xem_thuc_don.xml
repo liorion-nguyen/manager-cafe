@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#A08D7F">
 
         <TextView
             android:layout_width="match_parent"
@@ -16,13 +17,16 @@
             android:text="Thực đơn"
             android:textAlignment="center"
             android:textSize="15pt"
-            android:textStyle="bold|italic"/>
-
+            android:textStyle="bold"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/rounded_bottom_background"/>/>
+        <!-- Của list view bên dưới           android:divider="#fff"-->
         <ListView
             android:id="@+id/lvMonAn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="#fff"
             android:dividerHeight="15dp"
             android:layout_weight="1"
             />
@@ -32,7 +36,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="8dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:background="@color/white"
             >
 
 
@@ -43,9 +49,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttonoutline"
+                android:background="@drawable/rounded_button"
                 android:text="Trở lại"
-                android:textColor="#069C54"
                 android:textSize="20sp" />
 
             <Button
@@ -55,9 +60,8 @@
                 android:text="Thêm món ăn"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_button"
                 android:textSize="20sp"/>
         </LinearLayout>
 

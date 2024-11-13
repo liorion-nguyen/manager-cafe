@@ -15,16 +15,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-48dp">
+        tools:layout_editor_absoluteY="-48dp"
+        android:background="#F8F4E1">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thêm mới quán café"
+            android:text="THÊM MỚI QUÁN CAFE"
             android:textAlignment="center"
             android:textColor="#707070"
             android:textSize="12pt"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             android:layout_marginBottom="10dp"
             />
 
@@ -59,7 +60,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10px"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#69472E"
                 android:padding="10dp"
                 android:text="Chụp ảnh"
                 android:textSize="8pt"
@@ -75,7 +76,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10px"
               android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#69472E"
                 android:padding="10dp"
                 android:text="Chọn ảnh"
                 android:textSize="8pt"
@@ -97,36 +98,67 @@
             android:textColor="@color/white"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
             />
         <EditText
             android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập vào tên quán café ...." />
+            android:hint="Nhập vào tên quán café ...."
+            android:textColorHint="#69472E"
+            android:textColor="#69472E"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:layout_margin="15px"
+            />
 
         <EditText
             android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập vào địa chỉ quán café...." />
+            android:hint="Nhập vào địa chỉ quán café...."
+            android:textColorHint="#69472E"
+            android:textColor="#69472E"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:layout_margin="15px"
+            />
 
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập vào email quán café...." />
+            android:hint="Nhập vào email quán café...."
+            android:textColorHint="#69472E"
+            android:textColor="#69472E"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:layout_margin="15px"
+            />
 
         <EditText
             android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập vào số điện thoại quán café...." />
+            android:hint="Nhập vào số điện thoại quán café...."
+            android:textColorHint="#69472E"
+            android:textColor="#69472E"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:layout_margin="15px"
+            />
 
         <EditText
             android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mô tả quán café...." />
+            android:hint="Mô tả quán café...."
+            android:textColorHint="#69472E"
+            android:textColor="#69472E"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:layout_margin="15px"
+            />
 
 <!--        Time picker 1 -->
         <LinearLayout
@@ -143,6 +175,7 @@
                 android:textSize="10pt"
                 android:textStyle="bold"
                 android:text="Giờ mở cửa"
+                android:textColor="#69472E"
                 android:layout_marginBottom="10dp"
                 />
 
@@ -150,6 +183,8 @@
                 android:id="@+id/tpOpenTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:background="#69472E"
                 />
 
         </LinearLayout>
@@ -159,7 +194,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10px">
+            android:layout_marginTop="10px"
+           >
 
             <TextView
                 android:layout_width="match_parent"
@@ -170,13 +206,16 @@
                 android:textStyle="bold"
                 android:text="Giờ đóng cửa"
                 tools:ignore="RtlCompat"
+                android:textColor="#69472E"
                 android:layout_marginBottom="10dp"
                 />
 
             <TimePicker
                 android:id="@+id/tpCloseTime"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:background="#69472E"
                 android:layout_weight="1"/>
 
         </LinearLayout>
@@ -184,6 +223,7 @@
 <!--    Đoạn thực đơn-->
 
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -221,6 +261,7 @@
                 android:textSize="8pt"
                 android:background="@drawable/buttonoutline"
                 android:layout_marginEnd="8dp"
+                android:textColor="#69472E"
                 android:layout_weight="1"/>
 
             <Button
@@ -229,6 +270,7 @@
                 android:layout_height="wrap_content"
                 android:text="Xác nhận"
                 android:textSize="8pt"
+                android:textColor="#69472E"
                 android:background="@drawable/buttonoutline"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"/>
