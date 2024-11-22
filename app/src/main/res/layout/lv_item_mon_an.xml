@@ -33,7 +33,7 @@
                 android:gravity="left"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Tên món ăn"
+                android:text="Tên thực phẩm:"
                 android:textSize="20sp"
                 android:textColor="#30D3C4"
                 android:textStyle="bold|italic"

@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thêm món ăn mới"
+            android:text="Thêm thực đơn mới"
             android:textSize="16pt"
             android:textAlignment="center"
             android:textStyle="bold"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            card_view:cardCornerRadius="100dp"
+            card_view:cardCornerRadius="50dp"
             >
             <ImageView
                 android:id="@+id/ivAnhMonAn"
@@ -74,10 +74,9 @@
             android:id="@+id/edtTenMonAn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tên món ăn"
+            android:hint="Tên món ăn: "
             android:layout_margin="15px"
-
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:paddingTop="30px"
             android:paddingBottom="30px"
             android:textColorHint="#69472E"
@@ -89,10 +88,9 @@
             android:id="@+id/edtMoTaMonAn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mô tả món ăn "
+            android:hint="Mô tả món ăn: "
             android:layout_margin="15px"
-
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:paddingTop="30px"
             android:paddingBottom="30px"
             android:textColorHint="#69472E"
@@ -104,8 +102,8 @@
             android:id="@+id/edtGiaMonAn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10pt"
-            android:hint="Giá món ăn "
+            android:textSize="8pt"
+            android:hint="Giá món ăn: "
             android:paddingTop="30px"
             android:inputType="numberDecimal"
             android:layout_margin="15px"
@@ -116,6 +114,7 @@
             android:background="@drawable/edittext_background"/>/>
 
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

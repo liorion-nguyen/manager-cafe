@@ -13,7 +13,7 @@
         android:background="#F8F4E1">
         <ImageView
             android:id="@+id/imgData"
-            android:src="@drawable/nhahang"
+            android:src="@drawable/cuahang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
