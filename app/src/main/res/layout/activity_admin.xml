@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:text="Ứng dụng quản lý cửa nhà hàng"
+            android:text="Ứng dụng quản lý cửa hàng"
             android:textColor="#101010"
             android:textSize="12pt"
             android:textStyle="bold" />

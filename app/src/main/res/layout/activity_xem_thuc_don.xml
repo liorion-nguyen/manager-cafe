@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="25dp"
         android:orientation="vertical">
 
         <TextView
@@ -45,7 +46,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/buttonoutline"
                 android:text="Trở lại"
-                android:textColor="#069C54"
+                android:textColor="#EDE0CF"
                 android:textSize="20sp" />
 
             <Button
@@ -56,7 +57,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#EDE0CF"
                 android:layout_weight="1"
                 android:textSize="20sp"/>
         </LinearLayout>
