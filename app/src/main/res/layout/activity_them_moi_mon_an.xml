@@ -57,8 +57,7 @@
                 android:background="@drawable/buttonoutline"
                 android:textColor="#69472E"
                 android:layout_gravity="center"
-                android:layout_marginRight="20dp"
-                android:drawableStart="ca" />
+                android:layout_marginRight="20dp" />
             <Button
                 android:id="@+id/btnChonAnh"
                 android:layout_width="wrap_content"
