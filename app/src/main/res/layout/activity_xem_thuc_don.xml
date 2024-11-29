@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingTop="25dp"
         android:background="#A08D7F">
 
         <TextView
@@ -27,6 +28,7 @@
             android:id="@+id/lvMonAn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:divider="#fff"
             android:dividerHeight="15dp"
             android:layout_weight="1"
             />
@@ -51,6 +53,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_button"
                 android:text="Trở lại"
+                android:textColor="#EDE0CF"
                 android:textSize="20sp" />
 
             <Button
@@ -60,8 +63,9 @@
                 android:text="Thêm "
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_weight="1"
                 android:background="@drawable/rounded_button"
+                android:textColor="#EDE0CF"
+                android:layout_weight="1"
                 android:textSize="20sp"/>
         </LinearLayout>
 

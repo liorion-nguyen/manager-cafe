@@ -7,6 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".AdminActivity">
 
+    <!-- AppBar with Search functionality -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#69472E"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:src="@drawable/search"
+                android:contentDescription="Logo"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập cửa hàng bạn muốn tìm kiếm"
+                />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
     <!-- Main content layout (LinearLayout) -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,10 +52,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20px"
+            android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:text="Ứng dụng quản lý nhà hàng"
-            android:textColor="#000"
+            android:text="Ứng dụng quản lý cửa hàng"
+            android:textColor="#101010"
             android:textSize="12pt"
             android:textStyle="bold" />
 

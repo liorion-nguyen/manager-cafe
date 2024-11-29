@@ -167,7 +167,7 @@
                 />
 
             <TimePicker
-                android:id="@+id/tpGioMoCua"
+                android:id="@+id/tpOpenTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:timePickerMode="spinner"

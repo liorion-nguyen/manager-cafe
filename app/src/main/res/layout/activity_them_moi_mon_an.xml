@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="25dp"
         android:orientation="vertical"
         android:background="#F8F4E1">
 
@@ -57,8 +58,7 @@
                 android:background="@drawable/buttonoutline"
                 android:textColor="#69472E"
                 android:layout_gravity="center"
-                android:layout_marginRight="20dp"
-                android:drawableStart="ca" />
+                android:layout_marginRight="20dp"/>
             <Button
                 android:id="@+id/btnChonAnh"
                 android:layout_width="wrap_content"
