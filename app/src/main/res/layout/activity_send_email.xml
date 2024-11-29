@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Plugins.GuiEmail">
+    tools:context=".Plugins.SendEmail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/tenNH"
-            android:text="Ten nha hang"
+            android:text="Ten quan café"
             android:textAlignment="center"
             android:textSize="20pt"
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:textColor="@color/black"
             />
         <TextView
-            android:text="Email nhà hàng"
+            android:text="Email quán café"
             android:textSize="30sp"
             android:padding="10dp"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
             android:id="@+id/edtEmailTo"
             android:padding="10dp"
             android:textSize="20sp"
-            android:text="email nhà hàng..."
+            android:text="email quán café..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
@@ -78,7 +78,7 @@
             android:layout_marginTop="10dp"
             />
         <Button
-            android:id="@+id/btnTroLai"
+            android:id="@+id/imgBtnTroLai"
             android:text="Trở lại"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

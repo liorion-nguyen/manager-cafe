@@ -37,7 +37,7 @@ public class XemMonAn extends AppCompatActivity {
         ivAnhMonAn = findViewById(R.id.ivAnhMonAn);
         btnSuaMonAn = findViewById(R.id.btnSuaMonAn);
         btnXoaMonAn = findViewById(R.id.btnXoaMonAn);
-        btnTroLai = findViewById(R.id.btnTroLai);
+        btnTroLai = findViewById(R.id.imgBtnTroLai);
 
         // Doan code
         Intent intent = getIntent();

@@ -47,7 +47,7 @@
                 android:textColor="#48312c"
                 android:fontFamily="serif"/>
             <TextView
-                android:layout_marginTop="150px"
+                android:layout_marginTop="200px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Đăng ký tài khoản"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="130px">
+                android:layout_marginTop="150px">
                 <LinearLayout
                     android:layout_width="800px"
                     android:layout_height="100px"
@@ -159,13 +159,15 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/baseline_visibility_24"/>
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/btnDangKy"
                     android:layout_width="600px"
                     android:layout_height="100px"
-                    android:text="Dăng Ký"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_login"/>
+                    android:layout_marginBottom="50px"
+                    android:background="@drawable/button_login"
+                    android:text="Đăng Ký"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
 

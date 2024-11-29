@@ -46,7 +46,7 @@ public class XemThucDonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_xem_thuc_don);
 
         isConnected();
-        btnTroLai = findViewById(R.id.btnTroLai);
+        btnTroLai = findViewById(R.id.imgBtnTroLai);
         btnThemMonAn = findViewById(R.id.btnThemMonAn);
         lvMonAn = findViewById(R.id.lvMonAn);
         listMonAn = new ArrayList<>();

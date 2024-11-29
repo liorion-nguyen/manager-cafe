@@ -60,7 +60,7 @@ public class ThemMoiMonAnActivity extends AppCompatActivity {
         edtMoTaMonAn = findViewById(R.id.edtMoTaMonAn);
         edtGiaMonAn = findViewById(R.id.edtGiaMonAn);
         ivAnhMonAn = findViewById(R.id.ivAnhMonAn);
-        btnHuyBo = findViewById(R.id.btnTroLai);
+        btnHuyBo = findViewById(R.id.imgBtnTroLai);
         btnXacNhan = findViewById(R.id.btnXacNhan);
         btnChonAnh = findViewById(R.id.btnChonAnh);
         btnChupanh = findViewById(R.id.btnChupanh);

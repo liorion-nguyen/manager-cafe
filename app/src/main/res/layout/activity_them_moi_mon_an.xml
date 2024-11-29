@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="25dp"
         android:orientation="vertical">
 
         <TextView
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="Chụp ảnh"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#EDE0CF"
                 android:layout_gravity="center"
                 android:layout_marginRight="20dp"/>
             <Button
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="Chọn ảnh"
                 android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:textColor="#EDE0CF"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -99,7 +100,7 @@
             android:layout_gravity="center"
             >
             <Button
-                android:id="@+id/btnTroLai"
+                android:id="@+id/imgBtnTroLai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

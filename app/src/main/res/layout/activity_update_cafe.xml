@@ -12,8 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#9C7055"
+        android:paddingTop="15dp"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
             android:textSize="12pt"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="#707070"
+            android:textColor="#E0C0A9"
             />
 
         <androidx.cardview.widget.CardView
@@ -31,7 +32,7 @@
             app:cardCornerRadius="10dp"
             >
             <ImageView
-                android:id="@+id/ivAnhQuanCafe"
+                android:id="@+id/ivAvatar"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
@@ -52,30 +53,45 @@
                 android:layout_height="wrap_content"
                 android:text="Chụp ảnh"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:background="@drawable/primarybutton"
+                android:textColor="#EDE0CF"
+                android:shadowColor="#6A4731"
                 android:layout_gravity="center"/>
             <Button
                 android:id="@+id/btnChonAnh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chọn ảnh"
-                android:background="@drawable/buttonoutline"
-                android:textColor="#069C54"
+                android:background="@drawable/primarybutton"
+                android:textColor="#EDE0CF"
+                android:shadowColor="#6A4731"
                 android:layout_gravity="center"/>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCacHinhAnhCafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Các hình ảnh của quán café"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:background="@drawable/primarybutton"
+            android:textColor="@color/white"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+        />
 
 
 
         <EditText
-            android:id="@+id/edtTenQuanCafe"
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
             android:hint="Tên quán cafe"/>
 
         <EditText
-            android:id="@+id/edtDiaChiQuanCafe"
+            android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -89,14 +105,14 @@
             android:hint="Email quán cafe"/>
 
         <EditText
-            android:id="@+id/edtSoDienThoai"
+            android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
             android:hint="Số điện thoại quán cafe"/>
 
         <EditText
-            android:id="@+id/edtMoTaQuanCafe"
+            android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -120,9 +136,9 @@
                 />
 
             <TimePicker
-                android:id="@+id/tpGioMoCua"
+                android:id="@+id/tpOpenTime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -145,10 +161,11 @@
                 />
 
             <TimePicker
-                android:id="@+id/tpGioDongCua"
+                android:id="@+id/tpCloseTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+
 
         </LinearLayout>
 
@@ -163,7 +180,7 @@
             >
 
             <Button
-                android:id="@id/btnHuyBo"
+                android:id="@+id/btnHuyBo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
