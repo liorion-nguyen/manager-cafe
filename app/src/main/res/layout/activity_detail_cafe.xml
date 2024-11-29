@@ -27,7 +27,7 @@
                 android:text="CHI TIẾT QUÁN CAFE"
                 android:textAlignment="center"
                 android:textSize="16pt"
-                android:textStyle="bold|"
+                android:textStyle="bold"
                 android:textColorHint="#F8F4E1"
                 android:textColor="#F8F4E1"
                 android:background="@drawable/rounded_bottom_background"/>

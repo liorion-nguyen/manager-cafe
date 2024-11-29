@@ -16,7 +16,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="200dp"
-            card_view:cardCornerRadius="30dp">
+            app:cardCornerRadius="20dp">
             <ImageView
                 android:id="@+id/ivAvatar"
                 android:layout_width="match_parent"
