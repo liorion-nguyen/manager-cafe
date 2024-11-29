@@ -6,6 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,20 +38,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <!--        <ImageView-->
-        <!--            android:src="@drawable/nhahang"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:layout_width="200dp"-->
-        <!--            android:layout_height="200dp"-->
-        <!--            />-->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgAnh"
-            android:layout_marginTop="10dp"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:shapeAppearanceOverlay="@style/roundedImageView"
-            android:src="@drawable/nhahang"
-            />
+<!--        thu vien tao khung anh-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAnh"
+                android:layout_marginTop="10dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:shapeAppearanceOverlay="@style/roundedImageView"
+                android:src="@drawable/nhahang"
+                />
+            <Button
+                android:id="@+id/changeImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="Sửa ảnh"
+                android:backgroundTint="#615F5F"
+                android:textColor="@android:color/white" />
         <TextView
             android:textColor="#000000"
             android:textSize="20dp"
@@ -115,5 +124,26 @@
             android:text=""
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <Button
+                android:id="@+id/btnSuaProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sửa trang cá nhân"
+                />
+            <Button
+                android:id="@+id/btnUpdateProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cập nhật"
+                />
+        </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
