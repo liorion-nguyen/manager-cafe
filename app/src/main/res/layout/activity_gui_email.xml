@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Plugins.GuiEmail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tenNH"
+            android:text="Ten nha hang"
+            android:textAlignment="center"
+            android:textSize="20pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:text="Email nhà hàng"
+            android:textSize="30sp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="#707070"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/edtEmailTo"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:text="email nhà hàng..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Tiêu đề thư"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edtSubject"
+            android:padding="10dp"
+            android:hint="Tiêu đề thư..."
+            android:textColor="#707070"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Nội dung thư"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edtContent"
+            android:padding="10dp"
+            android:textColor="#707070"
+            android:hint="Nội dung thư..."
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="top"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:text="Gửi Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primarybutton"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            />
+        <Button
+            android:id="@+id/btnTroLai"
+            android:text="Trở lại"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primarybutton"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

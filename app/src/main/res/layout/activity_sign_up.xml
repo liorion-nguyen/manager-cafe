@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2d9c5"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="300px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COFFEE SHOP"
+                android:gravity="center"
+                android:textSize="100px"
+                android:textStyle="bold"
+                android:textColor="#48312c"
+                android:fontFamily="sans-serif-medium"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome!"
+                android:gravity="center"
+                android:textSize="50px"
+                android:textColor="#48312c"
+                android:fontFamily="serif"/>
+            <TextView
+                android:layout_marginTop="100px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng ký tài khoản"
+                android:gravity="center"
+                android:textSize="70px"
+                android:textStyle="bold"
+                android:textColor="#48312c"
+                android:fontFamily="sans-serif-medium"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="100px">
+                <EditText
+                    android:layout_width="800px"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="100px"
+                    android:paddingTop="20px"
+                    android:paddingBottom="20px"
+                    android:hint="Họ và tên"
+                    android:textColorHint="#48312c"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/button_create_account"/>
+                <EditText
+                    android:layout_width="800px"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="100px"
+                    android:paddingTop="20px"
+                    android:paddingBottom="20px"
+                    android:hint="Email"
+                    android:textColorHint="#48312c"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/button_create_account"/>
+                <EditText
+                    android:layout_width="800px"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="100px"
+                    android:paddingTop="20px"
+                    android:paddingBottom="20px"
+                    android:hint="Mật khẩu"
+                    android:textColorHint="#48312c"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/button_create_account"/>
+                <EditText
+                    android:layout_width="800px"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="100px"
+                    android:paddingTop="20px"
+                    android:paddingBottom="20px"
+                    android:hint="Xác nhận mật khẩu"
+                    android:textColorHint="#48312c"
+                    android:layout_marginBottom="50px"
+                    android:background="@drawable/button_create_account"/>
+                <Button
+                    android:id="@+id/btnDangNhap"
+                    android:layout_width="800px"
+                    android:layout_height="120px"
+                    android:text="Dăng nhập"
+                    android:layout_marginBottom="20px"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_login"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
