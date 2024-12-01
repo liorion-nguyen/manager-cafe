@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="15dp">
+    android:layout_marginTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,10 +22,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+           android:layout_margin="10dp"
             card_view:cardCornerRadius="15dp"
             card_view:cardElevation="4dp"
-            android:backgroundTint="#E0C0A9">
+            android:backgroundTint="#6C4E31">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
-                    android:layout_margin="5dp"
+
                     card_view:cardCornerRadius="30px">
 
                     <ImageView
@@ -44,7 +44,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/nhahang" />
+                        android:src="@drawable/cuahang" />
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingRight="10dp"
+                    android:layout_marginStart="5dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -61,7 +62,7 @@
                         android:layout_margin="5dp"
                         android:gravity="left"
                         android:text="Tên cửa hàng"
-                        android:textColor="#48312c"
+                        android:textColor="#F8F4E1"
                         android:textSize="8pt"
                         android:textStyle="bold|italic" />
 
@@ -71,7 +72,7 @@
                         android:layout_marginTop="20px"
                         android:gravity="right"
                         android:text="Đặt bàn (Booking)"
-                        android:textColor="#707070"
+                        android:textColor="#F8F4E1"
                         android:textSize="6pt"
                         android:textStyle="bold" />
 
@@ -82,7 +83,7 @@
                         android:layout_marginBottom="20px"
                         android:text="Số điện thoại: 0379273403"
                         android:textAlignment="textEnd"
-                        android:textColor="#25221F"
+                        android:textColor="#F8F4E1"
                         android:textSize="5pt"
                         android:textStyle="italic" />
 
@@ -101,7 +102,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="left"
                                 android:text="Giờ mở cửa"
-                                android:textColor="#707070"
+                                android:textColor="#F8F4E1"
                                 android:textSize="6pt"
                                 android:textStyle="bold" />
 
@@ -112,7 +113,7 @@
                                 android:layout_marginBottom="5px"
                                 android:gravity="left"
                                 android:text="09:00 - 11:00"
-                                android:textColor="#25221F"
+                                android:textColor="#F8F4E1"
                                 android:textSize="5pt" />
                         </LinearLayout>
 
@@ -127,7 +128,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
                                 android:text="Địa chỉ"
-                                android:textColor="#707070"
+                                android:textColor="#F8F4E1"
                                 android:textSize="6pt"
                                 android:textStyle="bold" />
 
@@ -135,7 +136,7 @@
                                 android:id="@+id/tvAddress"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="#25221F"
+                                android:textColor="#F8F4E1"
                                 android:layout_marginBottom="10px"
                                 android:text="Mô tả nhà hàng tại đây !"
                                 android:textAlignment="textEnd"

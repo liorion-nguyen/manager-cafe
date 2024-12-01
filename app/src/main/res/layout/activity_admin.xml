@@ -41,16 +41,14 @@
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Main content layout (LinearLayout) -->
-
-    <!-- BottomNavigationView -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f2d9c5"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="#F8F4E1">
 
+        <!-- TextView for title -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,16 +58,18 @@
             android:textColor="#101010"
             android:textSize="12pt"
             android:textStyle="bold" />
+
         <!-- ListView for displaying restaurant data -->
         <ListView
             android:id="@+id/lvNhaHang"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:divider="@android:color/transparent"
-            android:dividerHeight="3dp" />
+            android:dividerHeight="3dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
+    <!-- BottomNavigationView -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:background="#F8F4E1"
         >
         <ImageView
             android:src="@drawable/internet"
