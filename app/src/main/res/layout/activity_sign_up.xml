@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="100px">
+                android:layout_marginTop="150px">
                 <LinearLayout
                     android:layout_width="800px"
                     android:layout_height="100px"
@@ -135,7 +135,7 @@
                 <LinearLayout
                     android:layout_width="800px"
                     android:layout_height="100px"
-                    android:layout_marginBottom="50px"
+                    android:layout_marginBottom="100px"
                     android:background="@drawable/button_create_account"
                     android:orientation="horizontal"
                     android:padding="10px">
@@ -168,14 +168,6 @@
                     android:background="@drawable/button_login"
                     android:text="Đăng Ký"
                     android:textColor="@color/white" />
-                <Button
-                    android:id="@+id/btnHuy"
-                    android:layout_width="600px"
-                    android:layout_height="100px"
-                    android:text="Hủy"
-                    android:layout_marginBottom="20px"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_login"/>
             </LinearLayout>
         </LinearLayout>
 

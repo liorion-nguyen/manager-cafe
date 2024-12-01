@@ -135,6 +135,11 @@
                 android:layout_marginTop="8dp"
                 />
 
+            <TimePicker
+                android:id="@+id/tpOpenTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
         <!--        Time Picker 2 -->
@@ -161,10 +166,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <TimePicker
-                android:id="@+id/tpGioMoCua"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

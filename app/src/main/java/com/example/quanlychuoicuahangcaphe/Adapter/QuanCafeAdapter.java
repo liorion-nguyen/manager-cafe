@@ -28,6 +28,7 @@ public class QuanCafeAdapter extends ArrayAdapter implements Filterable {
     int resource;
     ArrayList<QuanCafe> listQuanCafe, listQuanCafeBackup, ListQuanCafeFilter;
 
+
     public QuanCafeAdapter(Activity context, int resource, ArrayList<QuanCafe> listQuanCafe){
         super(context, resource);
         this.context = context;

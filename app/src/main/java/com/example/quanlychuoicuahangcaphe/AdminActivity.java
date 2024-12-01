@@ -10,10 +10,13 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkRequest;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -40,6 +43,7 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     DatabaseReference quanCafe = databaseReference.child("cafe");
+    EditText editSeach;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,24 @@ public class AdminActivity extends AppCompatActivity {
         listQuanCafe = new ArrayList<>();
         quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this, R.layout.lv_item_nha_hang, listQuanCafe);
         lvQuanCafe.setAdapter(quanCafeAdapter);
+        editSeach = findViewById(R.id.edtSearch);
+
+        editSeach.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                quanCafeAdapter.getFilter().filter(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         fabThemQuanCafe.setOnClickListener(new View.OnClickListener() {
             @Override
