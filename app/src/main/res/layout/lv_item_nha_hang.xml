@@ -69,23 +69,21 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20px"
                         android:gravity="right"
-                        android:text="Đặt bàn (Booking)"
+                        android:text="Địa chỉ"
                         android:textColor="#F8F4E1"
                         android:textSize="6pt"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvPhoneNumber"
+                        android:id="@+id/tvAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20px"
-                        android:text="Số điện thoại: 0379273403"
+                        android:layout_marginBottom="10px"
+                        android:text="Mô tả nhà hàng tại đây !"
                         android:textAlignment="textEnd"
                         android:textColor="#F8F4E1"
-                        android:textSize="5pt"
-                        android:textStyle="italic" />
+                        android:textSize="5pt" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -95,13 +93,14 @@
                         <LinearLayout
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginStart="5dp">
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="left"
-                                android:text="Giờ mở cửa"
+                                android:text="Giờ mở cửa:"
                                 android:textColor="#F8F4E1"
                                 android:textSize="6pt"
                                 android:textStyle="bold" />
@@ -127,21 +126,24 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
-                                android:text="Địa chỉ"
+                                android:text="Thông tin liên hệ:"
                                 android:textColor="#F8F4E1"
                                 android:textSize="6pt"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvAddress"
+                                android:id="@+id/tvPhoneNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="#F8F4E1"
-                                android:layout_marginBottom="10px"
-                                android:text="Mô tả nhà hàng tại đây !"
+                                android:layout_marginBottom="20px"
+                                android:text="Số điện thoại: 0379273403"
                                 android:textAlignment="textEnd"
-                                android:textSize="5pt" />
+                                android:textColor="#F8F4E1"
+                                android:textSize="5pt"
+                                android:textStyle="italic" />
+
                         </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>

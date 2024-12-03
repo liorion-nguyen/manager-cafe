@@ -13,16 +13,16 @@
         android:background="#F8F4E1"
         >
         <ImageView
-            android:src="@drawable/internet"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:src="@drawable/signal"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             />
         <TextView
             android:id="@+id/noti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Vui lòng kết nối mạng"
+            android:text="Rất xin lỗi, đường truyền tạm thời bị gián đoạn. Vui lòng kiểm tra kết nối internet và thử lại sau."
             android:textAlignment="center"
             android:textColor="#ff0000"
             android:textSize="20dp"

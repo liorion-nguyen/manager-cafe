@@ -157,7 +157,8 @@
                     android:layout_weight="1"
                     android:text="4.1/5"
                     android:textAlignment="center"
-                    android:textSize="8pt" />
+                    android:textSize="8pt"
+                    android:textColor="#FFC94A"/>
 
                 <RatingBar
                     android:id="@+id/ratingBar"

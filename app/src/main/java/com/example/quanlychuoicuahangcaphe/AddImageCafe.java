@@ -229,7 +229,7 @@ public class AddImageCafe extends AppCompatActivity {
                                     CacAnhQuanCafe.add(link);
                                     a.setListHinhAnh(CacAnhQuanCafe);
                                     new_nh.setListHinhAnh(CacAnhQuanCafe);
-                                    ivChonAnh.setImageResource(R.drawable.img);
+                                    ivChonAnh.setImageResource(R.drawable.gallery);
                                     cacAnhCafeAdapter.notifyDataSetChanged();
                                 }
                             });
