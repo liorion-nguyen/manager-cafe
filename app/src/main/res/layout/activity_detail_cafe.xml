@@ -150,29 +150,32 @@
 
                 >
 
-                <TextView
-                    android:id="@+id/textrating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4.1/5"
-                    android:textAlignment="center"
-                    android:textSize="8pt"
-                    android:textColor="#FFC94A"/>
-
                 <RatingBar
                     android:id="@+id/ratingBar"
                     style="@android:style/Widget.Holo.Light.RatingBar"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:isIndicator="true"
+                    android:layout_marginStart="14dp"
                     android:numStars="5"
                     android:progressBackgroundTint="#C0C0C0"
                     android:progressTint="#FFC94A"
                     android:rating="4"
                     android:stepSize="0.05" />
+
+                <TextView
+                    android:id="@+id/textrating"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4.1/5"
+                    android:layout_marginEnd="14dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="8pt"
+                    android:textColor="#FFC94A"/>
+
             </LinearLayout>
 
             <TextView
