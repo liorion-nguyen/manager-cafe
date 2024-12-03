@@ -8,27 +8,54 @@
     android:background="#F8F4E1"
     tools:context=".AddImageCafe">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="THÊM MỚI ẢNH QUÁN CAFE"
-        android:background="@drawable/rounded_bottom_background"
-        android:textAlignment="center"
-        android:textColor="#F8F4E1"
-        android:textSize="12pt"
-        android:textStyle="bold"
-        android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/primarybutton"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgBtnTroLai"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:layout_gravity="center"
+            android:contentDescription="imgBtnTroLai"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center"
+            android:text="THÊM ẢNH QUÁN CAFE"
+            android:textAlignment="center"
+            android:textColor="#F8F4E1"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@+id/layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -104,28 +131,13 @@
         android:id="@+id/lvCacAnhCafe"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:divider="#C0C0C0"
         android:dividerHeight="1dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintBottom_toTopOf="@+id/imgBtnTroLai"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/imgBtnTroLai"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
-        android:text="Trở lại"
-        android:textColor="#fff"
-        android:textSize="10pt"
-        android:textStyle="bold"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

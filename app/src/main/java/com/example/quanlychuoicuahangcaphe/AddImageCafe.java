@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -51,7 +52,8 @@ import java.util.ArrayList;
 
 public class AddImageCafe extends AppCompatActivity {
     ImageView ivChonAnh;
-    Button btnChonAnh, btnThemAnh, btnTroLai, btnChupanh;
+    ImageButton btnTroLai;
+    Button btnChonAnh, btnThemAnh, btnChupanh;
     ListView lvCacAnhQuanCafe;
     ArrayList<String> CacAnhQuanCafe = new ArrayList<>();
     CacAnhCafeAdapter cacAnhCafeAdapter;
