@@ -67,14 +67,17 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:layout_width="800px"
-                    android:layout_height="100px"
-                    android:layout_marginBottom="20px"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/button_create_account"
                     android:orientation="horizontal"
-                    android:padding="10px">
+                    >
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_marginStart="10dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/baseline_alternate_email_24" />
                     <EditText
@@ -88,19 +91,21 @@
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="800px"
-                    android:layout_height="100px"
-                    android:layout_marginBottom="100px"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/button_create_account"
-                    android:orientation="horizontal"
-                    android:padding="10px">
+                    android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_marginStart="10dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/baseline_lock_outline_24" />
                     <EditText
                         android:id="@+id/edtMatKhau"
-                        android:layout_width="550px"
+                        android:layout_width="530px"
                         android:layout_height="match_parent"
                         android:background="@drawable/nothing"
                         android:hint="Mật khẩu"
@@ -111,15 +116,18 @@
                     <ImageView
                         android:id="@+id/imgPasswordInputType"
                         android:layout_width="match_parent"
+                        android:layout_marginStart="15dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/baseline_visibility_24"/>
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/btnDangNhap"
-                    android:layout_width="600px"
-                    android:layout_height="100px"
-                    android:layout_marginBottom="20px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingHorizontal="60dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/button_login"
                     android:text="Đăng nhập"
                     android:textColor="@color/white" />
@@ -127,7 +135,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50px"
                     android:gravity="bottom|center"
                     android:orientation="horizontal">
 

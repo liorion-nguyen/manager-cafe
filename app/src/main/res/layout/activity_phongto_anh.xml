@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/imgAnh"
             android:layout_weight="1"
-            android:src="@drawable/nhahang"
+            android:src="@drawable/cuahang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
