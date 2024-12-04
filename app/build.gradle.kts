@@ -5,7 +5,7 @@
 
 android {
     namespace = "com.example.quanlychuoicuahangcaphe"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.quanlychuoicuahangcaphe"
