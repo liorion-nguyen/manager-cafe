@@ -16,10 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SỬA MÓN ĂN"
-            android:textSize="12pt"
-            android:textColor="#69472E"
+            android:textSize="16pt"
+            android:textColor="#F8F4E1"
             android:textAlignment="center"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_bottom_background"/>
+            />
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -85,7 +88,7 @@
                 android:id="@+id/edtGiaMonAn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Giá món ăn"
+                android:hint="Giá món ăn:"
                 android:inputType="number"
                 android:textSize="8pt"
                 android:textColorHint="#69472E"
@@ -99,7 +102,7 @@
                 android:id="@+id/edtMoTaMonAn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mô tả món ăn"
+                android:hint="Mô tả món ăn:"
                 android:textSize="8pt"
                 android:textColorHint="#69472E"
                 android:textColor="#69472E"

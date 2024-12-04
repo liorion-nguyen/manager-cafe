@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <solid android:color="#69472E"/> <!-- Màu nâu -->
+    <corners android:radius="300dp"/> <!-- Tạo góc tròn -->
+</shape>
