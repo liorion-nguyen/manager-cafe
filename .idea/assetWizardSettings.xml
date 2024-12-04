@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_back/baseline_arrow_back_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/camera_alt/baseline_camera_alt_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,8 +317,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="48312c" />
-                            <entry key="outputName" value="baseline_arrow_back_24" />
+                            <entry key="color" value="69472e" />
+                            <entry key="outputName" value="baseline_camera_alt_24" />
                             <entry key="sourceFile" value="D:\New folder\TaiLieu\Nam3 - HK1\PhatTrienPhanMemChoThietBiDiDong\Project_CuoiKy\QuanLyChuoiCuaHangCaPhe" />
                           </map>
                         </option>

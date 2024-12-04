@@ -51,8 +51,8 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         // Ánh xạ
-        fabThemQuanCafe = findViewById(R.id.fabThemNhaHang);
-        lvQuanCafe = findViewById(R.id.lvNhaHang);
+        fabThemQuanCafe = findViewById(R.id.fabThemQuanCafe);
+        lvQuanCafe = findViewById(R.id.lvQuanCafe);
         listQuanCafe = new ArrayList<>();
         quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this, R.layout.lv_item_nha_hang, listQuanCafe);
         lvQuanCafe.setAdapter(quanCafeAdapter);

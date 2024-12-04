@@ -9,10 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="#F8F4E1">
         <ImageView
             android:id="@+id/imgData"
-            android:src="@drawable/nhahang"
+            android:src="@drawable/cuahang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -31,8 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/primarybutton"
-                android:textColor="#EDE0CF"
+                android:background="@drawable/edittext_background"
+                android:textColor="#69472E"
                 android:textSize="20sp"
                 android:padding="10dp"
 
@@ -44,8 +45,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/primarybutton"
-                android:textColor="#EDE0CF"
+                android:background="@drawable/edittext_background"
+                android:textColor="#69472E"
                 android:textSize="20sp"
 
                 />
