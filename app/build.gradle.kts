@@ -5,11 +5,11 @@
     }
 
 android {
-    namespace = "com.example.quanlychuoicuahangcaphe"
+    namespace = "com.example.quanlychuoicuahangcafe"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.quanlychuoicuahangcaphe"
+        applicationId = "com.example.quanlychuoicuahangcafe"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
