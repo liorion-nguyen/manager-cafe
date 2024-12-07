@@ -50,12 +50,15 @@ public class ProfileActivity extends AppCompatActivity {
          bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
              @Override
              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                 Intent intent;
                switch (item.getTitle().toString()) {
                    case "Home":
-                       Intent intent = new Intent(ProfileActivity.this, AdminActivity.class);
+                        intent = new Intent(ProfileActivity.this, AdminActivity.class);
                        startActivity(intent);
                        return true;
                    case "Settings":
+                       intent = new Intent(ProfileActivity.this, SettingActivity.class);
+                       startActivity(intent);
                        return true;
                    default:
                        return false;
