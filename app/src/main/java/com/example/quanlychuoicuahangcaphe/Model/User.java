@@ -7,14 +7,18 @@ public class User implements Serializable {
     private String fullname;
     private String email;
     private String password;
+    private String phone;
+    private String birthday;
 
     public User() {}
 
-    public User(String id, String fullname, String email, String password) {
+    public User(String id, String fullname, String email, String password, String phone, String birthday) {
         this.id = id;
         this.fullname = fullname;
         this.email = email;
         this.password = password;
+        this.phone = phone;
+        this.birthday = birthday;
     }
 
     @Override
@@ -24,6 +28,8 @@ public class User implements Serializable {
                 ", fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthday='" + birthday + '\'' +
                 '}';
     }
 
@@ -41,6 +47,22 @@ public class User implements Serializable {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getEmail() {

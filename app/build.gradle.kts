@@ -1,11 +1,12 @@
     plugins {
     id("com.android.application")
     id ("com.google.gms.google-services")
-}
+        id("org.jetbrains.kotlin.android")
+    }
 
 android {
     namespace = "com.example.quanlychuoicuahangcaphe"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.quanlychuoicuahangcaphe"
@@ -31,6 +32,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     // option email
     packagingOptions{
         exclude("META-INF/NOTICE.md")
@@ -39,7 +44,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

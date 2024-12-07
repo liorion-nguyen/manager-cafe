@@ -25,6 +25,7 @@ import com.example.quanlychuoicuahangcaphe.Adapter.QuanCafeAdapter;
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,7 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 public class AdminActivity extends AppCompatActivity {
     FloatingActionButton fabThemQuanCafe;
@@ -83,6 +84,27 @@ public class AdminActivity extends AppCompatActivity {
         });
         isConnected();
         docDuLieu();
+
+        // Initialize BottomNavigationView after setContentView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
+              switch (item.getTitle().toString()) {
+                  case "Profile":
+                      intent = new Intent(AdminActivity.this, ProfileActivity.class);
+                      startActivity(intent);
+                      return true;
+                  case "Settings":
+                      intent = new Intent(AdminActivity.this, SettingActivity.class);
+                      startActivity(intent);
+                      return true;
+                  default:
+                      return false;
+              }
+            }
+        });
     }
 
     // tao menu
