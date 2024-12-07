@@ -39,6 +39,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
+                android:contentDescription="backPage"
                 android:background="@drawable/rounded_button"
                 android:src="@drawable/baseline_arrow_back_24" />
 
@@ -79,6 +80,7 @@
                             android:layout_width="25pt"
                             android:layout_height="25pt"
                             android:background="@drawable/gmail"
+                            android:contentDescription="btnMail"
                             android:backgroundTint="#69472E" />
 
                         <ImageButton
@@ -87,6 +89,7 @@
                             android:layout_height="25pt"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/map"
+                            android:contentDescription="ShowMap"
                             android:backgroundTint="#69472E" />
                     </LinearLayout>
 
@@ -127,10 +130,12 @@
                             android:layout_width="25pt"
                             android:layout_height="25pt"
                             android:background="@drawable/message"
+                            android:contentDescription="btnSms"
                             android:backgroundTint="#69472E" />
 
                         <ImageButton
                             android:id="@+id/btnPhone"
+                            android:contentDescription="btnPhone"
                             android:layout_width="25pt"
                             android:layout_height="25pt"
                             android:layout_marginTop="10dp"
@@ -150,29 +155,43 @@
 
                 >
 
-                <TextView
-                    android:id="@+id/textrating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4.1/5"
-                    android:textAlignment="center"
-                    android:textSize="8pt" />
-
                 <RatingBar
                     android:id="@+id/ratingBar"
                     style="@android:style/Widget.Holo.Light.RatingBar"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:isIndicator="true"
+                    android:layout_marginStart="14dp"
                     android:numStars="5"
                     android:progressBackgroundTint="#C0C0C0"
                     android:progressTint="#FFC94A"
                     android:rating="4"
                     android:stepSize="0.05" />
+
+                <TextView
+                    android:id="@+id/textrating"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4.1/5"
+                    android:layout_marginEnd="14dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="8pt"
+                    android:textColor="#FFC94A"/>
+
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ quán cafe"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"/>
 
             <TextView
                 android:id="@+id/tvAddress"
@@ -185,6 +204,16 @@
                 android:textColor="#69472E"
                 android:padding="10dp"
                 android:background="@drawable/edittext_background"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email quán cafe"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"/>
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -200,6 +229,16 @@
                 />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:text="Số liên hệ quán cafe"
+                android:textColor="#69472E"
+                android:textColorHint="#69472E"
+                android:textSize="20dp" />
+
+            <TextView
                 android:id="@+id/tvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,6 +250,15 @@
                 android:padding="10dp"
                 android:background="@drawable/edittext_background"
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giờ mở cửa quán cafe"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"/>
 
             <TextView
                 android:id="@+id/tvOpenTime"
@@ -224,6 +272,15 @@
                 android:background="@drawable/edittext_background"
                 android:padding="10dp"
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả thêm về quán cafe"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
+                android:textColorHint="#69472E"
+                android:textColor="#69472E"/>
 
             <TextView
                 android:id="@+id/tvDescription"

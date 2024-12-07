@@ -61,7 +61,7 @@
 
         <!-- ListView for displaying restaurant data -->
         <ListView
-            android:id="@+id/lvNhaHang"
+            android:id="@+id/lvQuanCafe"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:divider="@android:color/transparent"
@@ -85,7 +85,7 @@
 
     <!-- FloatingActionButton -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabThemNhaHang"
+        android:id="@+id/fabThemQuanCafe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
