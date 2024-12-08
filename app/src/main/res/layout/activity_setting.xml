@@ -255,7 +255,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="wrap_content"
-        android:layout_height="66dp"
+        android:layout_height="wrap_content"
         android:background="#AF8F6F"
         app:itemActiveIndicatorStyle="@null"
         app:itemIconTint="@color/bottom_nav_item_color"
