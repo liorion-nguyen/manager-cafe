@@ -13,7 +13,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkRequest;
@@ -32,12 +31,10 @@ import com.example.quanlychuoicuahangcaphe.Adapter.CacAnhCafeAdapter;
 
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
-import com.example.quanlychuoicuahangcaphe.Plugins.PhongtoAnh;
-import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.quanlychuoicuahangcaphe.Plugins.PhongToAnh;
+import com.example.quanlychuoicuahangcaphe.Plugins.ChupAnh;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -96,7 +93,7 @@ public class AddImageCafe extends AppCompatActivity {
         btnChupanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddImageCafe.this, chupanh.class);
+                Intent intent = new Intent(AddImageCafe.this, ChupAnh.class);
                 ChupanhLaunch.launch(intent);
             }
         });
@@ -128,7 +125,7 @@ public class AddImageCafe extends AppCompatActivity {
         lvCacAnhQuanCafe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(AddImageCafe.this, PhongtoAnh.class);
+                Intent intent = new Intent(AddImageCafe.this, PhongToAnh.class);
                 Bundle data = new Bundle();
                 data.putString("anh", CacAnhQuanCafe.get(position));
                 intent.putExtras(data);

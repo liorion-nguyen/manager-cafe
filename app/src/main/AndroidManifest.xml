@@ -55,10 +55,10 @@
             android:name=".Plugins.CheckInternet"
             android:exported="false" />
         <activity
-            android:name=".Plugins.PhongtoAnh"
+            android:name=".Plugins.PhongToAnh"
             android:exported="false" />
         <activity
-            android:name=".Plugins.chupanh"
+            android:name=".Plugins.ChupAnh"
             android:exported="false" />
         <activity android:name=".Plugins.SendEmail" />
         <activity

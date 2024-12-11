@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
-import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
+import com.example.quanlychuoicuahangcaphe.Plugins.ChupAnh;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -91,7 +91,7 @@ public class SuaMonAnActivity extends AppCompatActivity {
         btnChupanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(SuaMonAnActivity.this, chupanh.class);
+                Intent intent= new Intent(SuaMonAnActivity.this, ChupAnh.class);
                 ChupanhLaunch.launch(intent);
             }
         });

@@ -17,7 +17,6 @@ import android.net.Network;
 import android.net.NetworkRequest;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,9 +28,8 @@ import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
-import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
+import com.example.quanlychuoicuahangcaphe.Plugins.ChupAnh;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -46,8 +44,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class AddACafeActivity extends AppCompatActivity {
     ImageView imgAnhCafe;
@@ -100,7 +96,7 @@ public class AddACafeActivity extends AppCompatActivity {
         btnChupanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddACafeActivity.this, chupanh.class);
+                Intent intent = new Intent(AddACafeActivity.this, ChupAnh.class);
                 ChupanhLaunch.launch(intent);
             }
         });

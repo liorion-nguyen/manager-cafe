@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import com.example.quanlychuoicuahangcaphe.Plugins.MapsActivity;
-import com.example.quanlychuoicuahangcaphe.Plugins.PhongtoAnh;
+import com.example.quanlychuoicuahangcaphe.Plugins.PhongToAnh;
 
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
@@ -91,10 +91,15 @@ public class DetailCafe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailCafe.this, MapsActivity.class);
-                intent.putExtra("nhahang_id", a.getId());
+//                intent.putExtra("nhahang_id", a.getId());
+//                startActivity(intent);
+                String diaChi = tvAddress.getText().toString(); // Lấy địa chỉ từ TextView
+                //TODO: lấy địa chi được lưu trên firebase để hiện thị vị trí
+                intent.putExtra("dia_chi", diaChi); // Truyền địa chỉ qua Intent
                 startActivity(intent);
             }
         });
+
         btnTroLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,7 +183,7 @@ public class DetailCafe extends AppCompatActivity {
         ivAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailCafe.this, PhongtoAnh.class);
+                Intent intent = new Intent(DetailCafe.this, PhongToAnh.class);
                 Bundle data = new Bundle();
                 data.putString("anh", a.getAvatar());
                 intent.putExtras(data);

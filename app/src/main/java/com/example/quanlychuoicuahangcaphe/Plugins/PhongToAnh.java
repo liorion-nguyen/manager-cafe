@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.R;
 
-public class PhongtoAnh extends AppCompatActivity {
+public class PhongToAnh extends AppCompatActivity {
     ImageView imgAnh;
     Button TroLai;
 
@@ -28,7 +28,7 @@ public class PhongtoAnh extends AppCompatActivity {
 
         String anh = data.getString("anh");
 
-        Glide.with(PhongtoAnh.this).load(anh).into(imgAnh);
+        Glide.with(PhongToAnh.this).load(anh).into(imgAnh);
 
 
         TroLai.setOnClickListener(new View.OnClickListener() {

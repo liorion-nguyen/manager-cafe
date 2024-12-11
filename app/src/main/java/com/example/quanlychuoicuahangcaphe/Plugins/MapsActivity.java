@@ -41,17 +41,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         isConnected();
+
         map = findViewById(R.id.map);
 
-        // Lấy ID nhà hàng từ Intent
-        String nhahangId = getIntent().getStringExtra("nhahang_id");
+        // Lấy địa chỉ từ Intent
+        String diaChi = getIntent().getStringExtra("dia_chi");
 
-        // Khởi tạo DatabaseReference cho nhaHang
-        nhaHangRef = FirebaseDatabase.getInstance().getReference().child("quanCafe");
+        if (diaChi != null && !diaChi.isEmpty()) {
+            // Khởi tạo Map Fragment
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            if (mapFragment != null) {
+                mapFragment.getMapAsync(googleMap -> {
+                    this.gMap = googleMap;
 
-        // Khởi tạo Map Fragment
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+                    // Chuyển địa chỉ thành LatLng và hiển thị trên bản đồ
+                    LatLng latLng = chuyenDiaChiThanhLatLng(diaChi);
+                    if (latLng != null) {
+                        gMap.addMarker(new MarkerOptions().position(latLng).title("Vị trí của quán"));
+                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                    } else {
+                        Log.e("MapsActivity", "Không thể chuyển đổi địa chỉ thành LatLng");
+                    }
+                });
+            } else {
+                Log.e("MapsActivity", "Không thể khởi tạo Map Fragment");
+            }
+        } else {
+            Log.e("MapsActivity", "Địa chỉ không hợp lệ");
+        }
     }
 
     @Override
@@ -83,7 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Xử lý lỗi từ cơ sở dữ liệu
+                // Xử lý lỗi từ Firebase
                 Log.e("FirebaseError", "Error: " + databaseError.getMessage());
             }
         });
@@ -92,34 +109,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LatLng chuyenDiaChiThanhLatLng(String diaChi) {
         Geocoder geocoder = new Geocoder(this);
         try {
+            // Chuyển địa chỉ thành tọa độ LatLng
             Address address = geocoder.getFromLocationName(diaChi, 1).get(0);
             if (address != null) {
-                double latitude = address.getLatitude();
-                double longitude = address.getLongitude();
-                return new LatLng(latitude, longitude);
+                return new LatLng(address.getLatitude(), address.getLongitude());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | IndexOutOfBoundsException e) {
+            Log.e("MapsActivity", "Lỗi khi chuyển đổi địa chỉ: " + e.getMessage());
         }
         return null;
     }
 
-    void isConnected() {
-        ConnectivityManager cm
-                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+    private void isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
 
-        cm.registerNetworkCallback
-                (
-                        builder.build(),
-                        new ConnectivityManager.NetworkCallback() {
-                            @Override
-                            public void onLost(Network network) {
-                                Intent intent = new Intent(MapsActivity.this, CheckInternet.class);
-                                startActivity(intent);
-                            }
-                        }
-
-                );
+        connectivityManager.registerNetworkCallback(builder.build(), new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onLost(@NonNull Network network) {
+                Intent intent = new Intent(MapsActivity.this, CheckInternet.class);
+                startActivity(intent);
+            }
+        });
     }
 }

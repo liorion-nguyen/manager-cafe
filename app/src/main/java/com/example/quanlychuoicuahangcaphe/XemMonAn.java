@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Model.monAn;
-import com.example.quanlychuoicuahangcaphe.Plugins.PhongtoAnh;
+import com.example.quanlychuoicuahangcaphe.Plugins.PhongToAnh;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class XemMonAn extends AppCompatActivity {
         ivAnhMonAn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(XemMonAn.this, PhongtoAnh.class);
+                Intent intent = new Intent(XemMonAn.this, PhongToAnh.class);
                 Bundle data = new Bundle();
                 data.putString("anh", ma.getHinhAnhMinhHoa());
                 intent.putExtras(data);

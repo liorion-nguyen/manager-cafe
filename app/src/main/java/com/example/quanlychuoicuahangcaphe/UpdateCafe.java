@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkRequest;
@@ -26,18 +24,15 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.Plugins.CheckInternet;
-import com.example.quanlychuoicuahangcaphe.Plugins.chupanh;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.quanlychuoicuahangcaphe.Plugins.ChupAnh;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -140,7 +135,7 @@ public class UpdateCafe extends AppCompatActivity {
         btnChupanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(UpdateCafe.this, chupanh.class);
+                Intent intent= new Intent(UpdateCafe.this, ChupAnh.class);
                 ChupanhLaunch.launch(intent);
             }
         });

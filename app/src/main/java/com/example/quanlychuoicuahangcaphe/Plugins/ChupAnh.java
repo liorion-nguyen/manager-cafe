@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -28,21 +29,21 @@ import com.bumptech.glide.Glide;
 import com.example.quanlychuoicuahangcaphe.R;
 
 
-public class chupanh extends AppCompatActivity {
+public class ChupAnh extends AppCompatActivity {
     ImageView imgData;
     Button takePicture,TroLai;
     String currentPhotoPath;
 
 
 
-    ActivityResultLauncher takePictureLauncher = registerForActivityResult(
+    ActivityResultLauncher<Intent> takePictureLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult o) {
                     if (o.getResultCode()==RESULT_OK)
                     {
-                        Glide.with(chupanh.this).load(currentPhotoPath).into(imgData);
+                        Glide.with(ChupAnh.this).load(currentPhotoPath).into(imgData);
 //                        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
 //                        imgData.setImageBitmap(bitmap);
                     }
@@ -88,14 +89,14 @@ public class chupanh extends AppCompatActivity {
                     //tao anh tam thoi
                     File imageFile = File.createTempFile(filename,".jpg",storageDirectory);
                     currentPhotoPath = imageFile.getAbsolutePath();
-                    Uri imgUri = FileProvider.getUriForFile(chupanh.this,"com.example.quanlychuoicuahangcaphe.fileprovider",imageFile);
+                    Uri imgUri = FileProvider.getUriForFile(ChupAnh.this,"com.example.quanlychuoicuahangcaphe.fileprovider",imageFile);
                     Intent takePictuerIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     takePictuerIntent.putExtra(MediaStore.EXTRA_OUTPUT,imgUri);
                     takePictureLauncher.launch(takePictuerIntent);
                 } catch (Exception e)
                 {
                     Log.d("Loi chup anh",e.toString());
-                    Toast.makeText(chupanh.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChupAnh.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -112,8 +113,8 @@ public class chupanh extends AppCompatActivity {
                         builder.build(),
                         new ConnectivityManager.NetworkCallback() {
                             @Override
-                            public void onLost(Network network) {
-                                Intent intent = new Intent(chupanh.this, CheckInternet.class);
+                            public void onLost(@NonNull Network network) {
+                                Intent intent = new Intent(ChupAnh.this, CheckInternet.class);
                                 startActivity(intent);
                             }
                         }

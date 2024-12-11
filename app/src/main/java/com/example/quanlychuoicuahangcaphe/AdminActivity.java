@@ -15,7 +15,6 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -33,7 +32,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class AdminActivity extends AppCompatActivity {
     FloatingActionButton fabThemQuanCafe;
@@ -58,6 +58,7 @@ public class AdminActivity extends AppCompatActivity {
         lvQuanCafe.setAdapter(quanCafeAdapter);
         editSeach = findViewById(R.id.edtSearch);
 
+        //ham tim kiem thong tin quan
         editSeach.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -74,36 +75,29 @@ public class AdminActivity extends AppCompatActivity {
 
             }
         });
-
-        fabThemQuanCafe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addACafe = new Intent(AdminActivity.this, AddACafeActivity.class);
-                startActivity(addACafe);
-            }
+        // ham them quan cafe
+        fabThemQuanCafe.setOnClickListener(view -> {
+            Intent addACafe = new Intent(AdminActivity.this, AddACafeActivity.class);
+            startActivity(addACafe);
         });
         isConnected();
         docDuLieu();
 
         // Initialize BottomNavigationView after setContentView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent intent;
-              switch (item.getTitle().toString()) {
-                  case "Profile":
-                      intent = new Intent(AdminActivity.this, ProfileActivity.class);
-                      startActivity(intent);
-                      return true;
-                  case "Settings":
-                      intent = new Intent(AdminActivity.this, SettingActivity.class);
-                      startActivity(intent);
-                      return true;
-                  default:
-                      return false;
-              }
-            }
+        bottomNavigationView.setOnItemSelectedListener(item -> {Intent intent;
+          switch (Objects.requireNonNull(item.getTitle()).toString()) {
+              case "Profile":
+                  intent = new Intent(AdminActivity.this, ProfileActivity.class);
+                  startActivity(intent);
+                  return true;
+              case "Settings":
+                  intent = new Intent(AdminActivity.this, SettingActivity.class);
+                  startActivity(intent);
+                  return true;
+              default:
+                  return false;
+          }
         });
     }
 
@@ -115,6 +109,7 @@ public class AdminActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.search_menu, menu);
         MenuItem searchBar = menu.findItem(R.id.searchBar);
         SearchView searchView = (SearchView) searchBar.getActionView();
+        assert searchView != null;
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -142,7 +137,7 @@ public class AdminActivity extends AppCompatActivity {
                 builder.build(),
                 new ConnectivityManager.NetworkCallback() {
                     @Override
-                    public void onLost(Network network) {
+                    public void onLost(@NonNull Network network) {
                         Intent intent = new Intent(AdminActivity.this, CheckInternet.class);
                         startActivity(intent);
                     }
@@ -165,19 +160,19 @@ public class AdminActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listQuanCafe.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    QuanCafe nh = data.getValue(QuanCafe.class);
+                    QuanCafe cuahang = data.getValue(QuanCafe.class);
                     DataSnapshot data4 = data.child("danhGia");
                     float sumda = 0;
-                    float arrda = 0;
-
+                    float arrDa;
                     for (DataSnapshot a : data4.getChildren()) {
-                        sumda += Float.parseFloat(a.getValue().toString());
+                        sumda += Float.parseFloat(Objects.requireNonNull(a.getValue()).toString());
                     }
                     if (data4.getChildrenCount() == 0) {
-                        arrda = 0;
+                        arrDa = 0;
                     } else
-                        arrda = sumda / data4.getChildrenCount();
-                    nh.setTb(arrda);
+                        arrDa = sumda / data4.getChildrenCount();
+                    assert cuahang != null;
+                    cuahang.setTb(arrDa);
 
                     ArrayList<monAn> listMonAn = new ArrayList<>();
                     DataSnapshot data1 = data.child("thucDon");
@@ -191,14 +186,12 @@ public class AdminActivity extends AppCompatActivity {
                     DataSnapshot dataCacAnhQuanCafe = data.child("listImages");
                     ArrayList<String> hinhanhs = new ArrayList<>();
                     for (DataSnapshot data3 : dataCacAnhQuanCafe.getChildren()) {
-                        hinhanhs.add(data3.getValue().toString());
+                        hinhanhs.add(Objects.requireNonNull(data3.getValue()).toString());
                     }
 
-                    nh.setListHinhAnh(hinhanhs);
-                    nh.setListMonAn(listMonAn);
-                    if (nh != null) {
-                        listQuanCafe.add(nh);
-                    }
+                    cuahang.setListHinhAnh(hinhanhs);
+                    cuahang.setListMonAn(listMonAn);
+                    listQuanCafe.add(cuahang);
                 }
                 quanCafeAdapter.notifyDataSetChanged();
             }
