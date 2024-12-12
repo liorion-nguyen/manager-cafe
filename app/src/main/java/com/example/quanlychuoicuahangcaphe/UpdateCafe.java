@@ -102,7 +102,7 @@ public class UpdateCafe extends AppCompatActivity {
             }
         });
 
-        ActivityResultLauncher ChupanhLaunch = registerForActivityResult(
+        ActivityResultLauncher<Intent> ChupAnhLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -136,7 +136,7 @@ public class UpdateCafe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(UpdateCafe.this, ChupAnh.class);
-                ChupanhLaunch.launch(intent);
+                ChupAnhLaunch.launch(intent);
             }
         });
 

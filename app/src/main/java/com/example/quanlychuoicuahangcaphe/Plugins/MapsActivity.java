@@ -11,10 +11,8 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkRequest;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 import android.util.Log;
 
-import com.example.quanlychuoicuahangcaphe.Model.QuanCafe;
 import com.example.quanlychuoicuahangcaphe.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,52 +20,28 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    GoogleMap gMap;
-    FrameLayout map;
-    private DatabaseReference nhaHangRef;
+    private GoogleMap gMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        isConnected();
 
-        map = findViewById(R.id.map);
+        // Kiểm tra kết nối mạng
+        checkInternetConnection();
 
-        // Lấy địa chỉ từ Intent
-        String diaChi = getIntent().getStringExtra("dia_chi");
-
-        if (diaChi != null && !diaChi.isEmpty()) {
-            // Khởi tạo Map Fragment
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-            if (mapFragment != null) {
-                mapFragment.getMapAsync(googleMap -> {
-                    this.gMap = googleMap;
-
-                    // Chuyển địa chỉ thành LatLng và hiển thị trên bản đồ
-                    LatLng latLng = chuyenDiaChiThanhLatLng(diaChi);
-                    if (latLng != null) {
-                        gMap.addMarker(new MarkerOptions().position(latLng).title("Vị trí của quán"));
-                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                    } else {
-                        Log.e("MapsActivity", "Không thể chuyển đổi địa chỉ thành LatLng");
-                    }
-                });
-            } else {
-                Log.e("MapsActivity", "Không thể khởi tạo Map Fragment");
-            }
+        // Khởi tạo Map Fragment
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
         } else {
-            Log.e("MapsActivity", "Địa chỉ không hợp lệ");
+            Log.e("MapsActivity", "Không thể khởi tạo Map Fragment");
         }
     }
 
@@ -75,61 +49,55 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap googleMap) {
         this.gMap = googleMap;
 
-        // Lấy ID nhà hàng từ Intent
-        String nhahangId = getIntent().getStringExtra("nhahang_id");
+        // Lấy thông tin từ Intent
+        String diaChi = getIntent().getStringExtra("address");
+        String tenQuan = getIntent().getStringExtra("ten_quan");
 
-        // Thực hiện truy vấn đến Firebase để lấy địa chỉ theo ID
-        nhaHangRef.child(nhahangId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    QuanCafe quanCafe = dataSnapshot.getValue(QuanCafe.class);
-
-                    if (quanCafe != null) {
-                       LatLng quanCafeLatLng = chuyenDiaChiThanhLatLng(quanCafe.address);
-                        // Thêm đánh dấu cho địa điểm đích
-                        gMap.addMarker(new MarkerOptions().position(quanCafeLatLng).title("Quán cà phê"));
-
-                        // Di chuyển camera đến địa điểm đích
-                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(quanCafeLatLng, 15));
-                    }
-                } else {
-                    Log.e("MapsActivity", "Không tìm thấy nhà hàng với ID đã cho");
-                }
+        if (diaChi != null && !diaChi.isEmpty()) {
+            // Hiển thị vị trí từ địa chỉ
+            LatLng latLng = convertAddressToLatLng(diaChi);
+            if (latLng != null) {
+                addMarkerAndMoveCamera(latLng, tenQuan);
+            } else {
+                Log.e("MapsActivity", "Không thể chuyển đổi địa chỉ thành LatLng");
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Xử lý lỗi từ Firebase
-                Log.e("FirebaseError", "Error: " + databaseError.getMessage());
-            }
-        });
+        } else {
+            Log.e("MapsActivity", "Không có thông tin địa chỉ");
+        }
     }
 
-    private LatLng chuyenDiaChiThanhLatLng(String diaChi) {
+    private LatLng convertAddressToLatLng(String address) {
         Geocoder geocoder = new Geocoder(this);
         try {
-            // Chuyển địa chỉ thành tọa độ LatLng
-            Address address = geocoder.getFromLocationName(diaChi, 1).get(0);
-            if (address != null) {
-                return new LatLng(address.getLatitude(), address.getLongitude());
+            List<Address> addresses = geocoder.getFromLocationName(address, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address location = addresses.get(0);
+                return new LatLng(location.getLatitude(), location.getLongitude());
             }
-        } catch (IOException | IndexOutOfBoundsException e) {
+        } catch (IOException e) {
             Log.e("MapsActivity", "Lỗi khi chuyển đổi địa chỉ: " + e.getMessage());
         }
         return null;
     }
 
-    private void isConnected() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+    private void addMarkerAndMoveCamera(LatLng latLng, String nameQuan) {
+        if (gMap != null) {
+            gMap.addMarker(new MarkerOptions().position(latLng).title("Vị trí của quán " + nameQuan));
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+        }
+    }
+
+    private void checkInternetConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
 
         connectivityManager.registerNetworkCallback(builder.build(), new ConnectivityManager.NetworkCallback() {
             @Override
             public void onLost(@NonNull Network network) {
-                Intent intent = new Intent(MapsActivity.this, CheckInternet.class);
-                startActivity(intent);
+                startActivity(new Intent(MapsActivity.this, CheckInternet.class));
+                finish();
             }
         });
     }
+
 }

@@ -44,8 +44,6 @@ public class ChupAnh extends AppCompatActivity {
                     if (o.getResultCode()==RESULT_OK)
                     {
                         Glide.with(ChupAnh.this).load(currentPhotoPath).into(imgData);
-//                        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
-//                        imgData.setImageBitmap(bitmap);
                     }
 
                 }

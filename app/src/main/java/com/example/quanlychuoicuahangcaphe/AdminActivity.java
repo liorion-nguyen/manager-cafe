@@ -43,7 +43,7 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     DatabaseReference quanCafe = databaseReference.child("cafe");
-    EditText editSeach;
+    EditText editSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +54,12 @@ public class AdminActivity extends AppCompatActivity {
         fabThemQuanCafe = findViewById(R.id.fabThemQuanCafe);
         lvQuanCafe = findViewById(R.id.lvQuanCafe);
         listQuanCafe = new ArrayList<>();
-        quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this, R.layout.lv_item_nha_hang, listQuanCafe);
+        quanCafeAdapter = new QuanCafeAdapter(AdminActivity.this, R.layout.lv_item_cua_hang, listQuanCafe);
         lvQuanCafe.setAdapter(quanCafeAdapter);
-        editSeach = findViewById(R.id.edtSearch);
+        editSearch = findViewById(R.id.edtSearch);
 
         //ham tim kiem thong tin quan
-        editSeach.addTextChangedListener(new TextWatcher() {
+        editSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 

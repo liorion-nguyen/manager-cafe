@@ -26,6 +26,7 @@ public class PhongToAnh extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle  data = intent.getExtras();
 
+        assert data != null;
         String anh = data.getString("anh");
 
         Glide.with(PhongToAnh.this).load(anh).into(imgAnh);

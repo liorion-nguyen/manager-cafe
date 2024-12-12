@@ -86,16 +86,13 @@ public class DetailCafe extends AppCompatActivity {
         textrating.setText(rate+"/5");
 
         // Phan code
-
+        //showw map
         btnShowMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailCafe.this, MapsActivity.class);
-//                intent.putExtra("nhahang_id", a.getId());
-//                startActivity(intent);
-                String diaChi = tvAddress.getText().toString(); // Lấy địa chỉ từ TextView
-                //TODO: lấy địa chi được lưu trên firebase để hiện thị vị trí
-                intent.putExtra("dia_chi", diaChi); // Truyền địa chỉ qua Intent
+                intent.putExtra("address", a.getAddress());// Lấy địa chỉ từ TextView
+                intent.putExtra("ten_quan", a.getName()); // gan ten de hien thi ten quan
                 startActivity(intent);
             }
         });
@@ -180,11 +177,13 @@ public class DetailCafe extends AppCompatActivity {
         tvDescription.setText("Mô tả : " + a.getDescription());
         Glide.with(DetailCafe.this).load(a.getAvatar()).into(ivAvatar);
 
+        // ham phong to anh
         ivAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailCafe.this, PhongToAnh.class);
                 Bundle data = new Bundle();
+                // gan ghi trị anh co ten la anh
                 data.putString("anh", a.getAvatar());
                 intent.putExtras(data);
                 startActivity(intent);

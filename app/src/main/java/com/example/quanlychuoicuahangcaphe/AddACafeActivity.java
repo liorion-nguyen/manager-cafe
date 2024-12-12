@@ -79,7 +79,7 @@ public class AddACafeActivity extends AppCompatActivity {
         tpCloseTime = findViewById(R.id.tpCloseTime);
         btnChupanh = findViewById(R.id.btnChupanh);
 
-        ActivityResultLauncher ChupanhLaunch = registerForActivityResult(
+        ActivityResultLauncher<Intent> chupAnhLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -97,7 +97,7 @@ public class AddACafeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddACafeActivity.this, ChupAnh.class);
-                ChupanhLaunch.launch(intent);
+                chupAnhLaunch.launch(intent);
             }
         });
 
